@@ -51,7 +51,7 @@ export function Header() {
               <img 
                 src="/logo.png" 
                 alt="Holy Resurrection Antiochian Orthodox Church"
-                className="w-44 h-44 md:w-52 md:h-52 object-contain"
+                className="w-56 h-56 md:w-64 md:h-64 object-contain"
               />
             </Link>
 
