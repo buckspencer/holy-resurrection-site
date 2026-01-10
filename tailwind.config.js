@@ -21,6 +21,9 @@ export default {
         'primary-dark': '#292932', // Updated to brand black
         secondary: '#E6BD7C', // Updated to brand gold
         sage: '#728158', // Updated to brand green
+        
+        // Update bg-sage references to use green instead
+        'sage/20': '#72815833',
         navy: '#365A69', // Updated to brand blue
       },
       fontFamily: {
