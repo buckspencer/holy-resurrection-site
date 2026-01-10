@@ -1,0 +1,15 @@
+/* HRAOC Brand Typography */
+/* Note: Rumble Brave is an Adobe font - need to add via Adobe Fonts or use fallback */
+@import url('https://fonts.googleapis.com/css2?family=Quando:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&display=swap');
+/* Amoresa Aged not available on Google Fonts - using Great Vibes as alternative for quotes */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #F8F4F0; /* HRAOC Brand Cream */
+}
