@@ -131,14 +131,36 @@ export function Home() {
 			</section>
 
 			{/* Main Hero Section */}
-			<section className="bg-red py-20">
+			<section className="bg-red py-20 relative">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h1 className="font-heading text-5xl md:text-7xl text-cream mb-8">
-						HOLY RESURRECTION ANTIOCHIAN ORTHODOX CHURCH
+					<h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-cream mb-8 tracking-wider leading-tight">
+						HOLY RESURRECTION<br />ANTIOCHIAN ORTHODOX CHURCH
 					</h1>
-					<p className="font-quote text-2xl text-cream/90 italic mb-12 max-w-3xl mx-auto">
-						Divine Liturgy Sunday 10am
+					
+					<p className="font-quote text-3xl md:text-4xl text-cream italic mb-8 tracking-wide leading-relaxed">
+						Rooted in Tradition, Alive in Christ
 					</p>
+					
+					{/* Decorative ornament */}
+					<div className="flex justify-center mb-10">
+						<div className="text-cream/80 text-lg tracking-widest">
+							━━━ ◊ ◊ ◊ ━━━
+						</div>
+					</div>
+					
+					<p className="font-body text-xl md:text-2xl text-cream mb-4 font-medium tracking-wide">
+						Welcoming all who seek the ancient Christian faith
+					</p>
+					<p className="font-body text-lg md:text-xl text-cream/90 mb-12 tracking-wide">
+						Join us for worship, prayer, and life in Christ in Tucson, AZ
+					</p>
+
+					{/* Dome Interior Image with integrated banner */}
+					<img 
+						src="/landing-dome-banner.png" 
+						alt="Orthodox Church Dome Interior with Banner" 
+						className="w-full max-w-5xl mx-auto mb-12 object-contain object-bottom"
+					/>
 
 					<div className="bg-cream/10 backdrop-blur-sm rounded-lg p-8 max-w-lg mx-auto">
 						<img

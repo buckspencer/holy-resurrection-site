@@ -1,141 +1,81 @@
+import { TextImageSection } from '../components/TextImageSection'
+import { HistorySection } from '../components/HistorySection'
+import { FullWidthImage } from '../components/FullWidthImage'
+
 export function About() {
   return (
     <div>
+      {/* Hero Banner - Full Width */}
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-16 md:-mt-20">
+        <img 
+          src="/about-hero.png" 
+          alt="About Us Hero" 
+          className="w-full h-56 md:h-64 object-cover object-top"
+        />
+      </div>
 
       {/* Our Vision Section */}
-      <section className="py-16 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="font-heading text-2xl text-rust mb-6 uppercase tracking-wide">Our Vision</h2>
-              <div className="font-body text-rust leading-relaxed space-y-4 text-sm">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                  velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-                  officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde 
-                  omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-                  architecto beatae vitae dicta sunt explicabo.
-                </p>
-                <p>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
-                  fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem 
-                  sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                  sit amet, consectetur, adipisci velit.
-                </p>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              <img 
-                src="/about-vision-1.jpg" 
-                alt="Church Interior 1" 
-                className="w-full h-32 object-cover rounded"
-              />
-              <img 
-                src="/about-vision-2.jpg" 
-                alt="Church Interior 2" 
-                className="w-full h-32 object-cover rounded"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <TextImageSection
+        title="Our Vision"
+        content={[
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+          "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+          "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=500&h=300&fit=crop"
+        imageAlt="Church Interior with Candles"
+        backgroundColor="cream"
+        imagePosition="right"
+        titleColor="rust"
+        textColor="rust"
+        titleInTextColumn={true}
+        halfImage={true}
+      />
 
       {/* Iconostasis Image Section */}
-      <section className="py-0">
-        <div className="w-full">
-          <img 
-            src="/iconostasis-full.jpg" 
-            alt="Holy Resurrection Iconostasis" 
-            className="w-full h-64 md:h-96 object-cover"
-          />
-        </div>
-      </section>
+      <FullWidthImage
+        src="/banner-iconostasis.png"
+        alt="Holy Resurrection Iconostasis"
+        height="large"
+      />
 
       {/* Holy Resurrection's History Section */}
-      <section className="py-16 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-2xl text-rust mb-6 uppercase tracking-wide">Holy Resurrection's History</h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
-            <div>
-              <div className="font-body text-rust leading-relaxed space-y-4 text-sm">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                  velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-                  officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde 
-                  omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-                  architecto beatae vitae dicta sunt explicabo.
-                </p>
-                <p>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
-                  fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem 
-                  sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                  sit amet, consectetur, adipisci velit, sed quia non numquam eius modi 
-                  tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                </p>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              <img 
-                src="/history-photo-1.jpg" 
-                alt="Church History 1" 
-                className="w-full h-32 object-cover rounded"
-              />
-              <img 
-                src="/history-photo-2.jpg" 
-                alt="Church History 2" 
-                className="w-full h-32 object-cover rounded"
-              />
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <button className="bg-rust text-cream font-body px-6 py-2 text-sm uppercase tracking-wide hover:bg-rust/90 transition-colors">
-              Read More
-            </button>
-          </div>
-        </div>
-      </section>
+      <HistorySection
+        title="Holy Resurrection's History"
+        firstParagraph="The journey of Holy Resurrection Antiochian Orthodox Church has been a very long and arduous one, beginning with its inception as a mission in Tucson, AZ in 1980, with Father David Russ, and the help of several Antiochian families already residing in Tucson. In 1981, His Grace Bishop Antoun assigned Fr. Andrew Kish to the newly established St. George Antiochian Orthodox Church in Phoenix. Fulfilling the need for an English-speaking Orthodox Church with approximately 75 Orthodox Christians in attendance, the inaugural service was held in the Chapel of the Arizona Seminary at 5651, Palo Alto."
+        secondParagraph="For the next few months, Deacon Andrew Kish commuted from Glendale, Arizona to help the newly formed mission. In the summer of 1981, the Kish family moved to Tucson and Deacon Andrew was ordained to the Holy Priesthood on July 13, 1981, and was appointed as the first Pastor of HRAOC. As attendance grew over the next few months, services were moved from the Chapel of the Arizona Seminary to the rental hall of Stone Stables Church and our search for a new and more permanent home hall in the chapel of the Arizona Seminary a Story began."
+        image1Src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=300&h=200&fit=crop"
+        image1Alt="Church History - Early Days"
+        image2Src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop"
+        image2Alt="Church History - Community Growth"
+        buttonText="Read More"
+        backgroundColor="cream"
+        titleColor="rust"
+        textColor="rust"
+        buttonStyle="primary"
+      />
 
       {/* Our Leadership Section */}
       <section className="py-16 bg-rust">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-2xl text-cream mb-6 uppercase tracking-wide">Our Leadership</h2>
+            <h2 className="font-heading text-4xl text-cream mb-6 uppercase tracking-wide">Our Leadership</h2>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
             <div className="text-center">
               <img 
-                src="/father-gabriel-portrait-framed.jpg" 
+                src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=500&fit=crop" 
                 alt="Fr. Gabriel Portrait" 
-                className="w-64 h-auto mx-auto rounded shadow-lg"
+                className="w-80 h-96 mx-auto rounded-lg shadow-lg object-cover"
               />
             </div>
             
             <div>
-              <div className="font-body text-cream leading-relaxed space-y-4 text-sm">
+              <div className="font-body text-cream leading-relaxed space-y-4 text-base">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
                   veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
                   commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
                   velit esse cillum dolore eu fugiat nulla pariatur.
@@ -154,9 +94,9 @@ export function About() {
                 </p>
               </div>
               
-              <div className="mt-6">
-                <button className="bg-cream text-rust font-body px-6 py-2 text-sm uppercase tracking-wide hover:bg-cream/90 transition-colors">
-                  Read More
+              <div className="mt-8">
+                <button className="bg-green text-cream font-body px-8 py-3 text-sm uppercase tracking-wide hover:bg-green/90 transition-colors rounded">
+                  Meet our Clergy
                 </button>
               </div>
             </div>
@@ -168,12 +108,12 @@ export function About() {
       <section className="py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-2xl text-rust mb-6 uppercase tracking-wide">Our Ministries</h2>
+            <h2 className="font-heading text-4xl text-rust mb-6 uppercase tracking-wide">Our Ministries</h2>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <div className="font-body text-rust leading-relaxed space-y-4 text-sm">
+              <div className="font-body text-rust leading-relaxed space-y-4 text-base">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
@@ -189,18 +129,18 @@ export function About() {
                 </p>
               </div>
               
-              <div className="mt-6">
-                <button className="bg-rust text-cream font-body px-6 py-2 text-sm uppercase tracking-wide hover:bg-rust/90 transition-colors">
-                  Read More
+              <div className="mt-8">
+                <button className="bg-green text-cream font-body px-8 py-3 text-sm uppercase tracking-wide hover:bg-green/90 transition-colors rounded">
+                  Get Involved
                 </button>
               </div>
             </div>
             
             <div className="text-center">
               <img 
-                src="/ministries-photo.jpg" 
-                alt="Church Ministries" 
-                className="w-full max-w-md mx-auto rounded shadow-lg"
+                src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=500&h=400&fit=crop" 
+                alt="Church Ministries - Community Gathering" 
+                className="w-full max-w-md mx-auto rounded-lg shadow-lg"
               />
             </div>
           </div>
