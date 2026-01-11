@@ -22,7 +22,7 @@ export function About() {
           "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
           "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
         ]}
-        imageSrc="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=500&h=300&fit=crop"
+        imageSrc="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=300&fit=crop"
         imageAlt="Church Interior with Candles"
         backgroundColor="cream"
         imagePosition="right"
@@ -44,9 +44,9 @@ export function About() {
         title="Holy Resurrection's History"
         firstParagraph="The journey of Holy Resurrection Antiochian Orthodox Church has been a very long and arduous one, beginning with its inception as a mission in Tucson, AZ in 1980, with Father David Russ, and the help of several Antiochian families already residing in Tucson. In 1981, His Grace Bishop Antoun assigned Fr. Andrew Kish to the newly established St. George Antiochian Orthodox Church in Phoenix. Fulfilling the need for an English-speaking Orthodox Church with approximately 75 Orthodox Christians in attendance, the inaugural service was held in the Chapel of the Arizona Seminary at 5651, Palo Alto."
         secondParagraph="For the next few months, Deacon Andrew Kish commuted from Glendale, Arizona to help the newly formed mission. In the summer of 1981, the Kish family moved to Tucson and Deacon Andrew was ordained to the Holy Priesthood on July 13, 1981, and was appointed as the first Pastor of HRAOC. As attendance grew over the next few months, services were moved from the Chapel of the Arizona Seminary to the rental hall of Stone Stables Church and our search for a new and more permanent home hall in the chapel of the Arizona Seminary a Story began."
-        image1Src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=300&h=200&fit=crop"
+        image1Src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop"
         image1Alt="Church History - Early Days"
-        image2Src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop"
+        image2Src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop"
         image2Alt="Church History - Community Growth"
         buttonText="Read More"
         backgroundColor="cream"
@@ -65,7 +65,7 @@ export function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
             <div className="text-center">
               <img 
-                src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=500&fit=crop" 
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=500&fit=crop" 
                 alt="Fr. Gabriel Portrait" 
                 className="w-80 h-96 mx-auto rounded-lg shadow-lg object-cover"
               />
@@ -138,7 +138,7 @@ export function About() {
             
             <div className="text-center">
               <img 
-                src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=500&h=400&fit=crop" 
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=400&fit=crop" 
                 alt="Church Ministries - Community Gathering" 
                 className="w-full max-w-md mx-auto rounded-lg shadow-lg"
               />

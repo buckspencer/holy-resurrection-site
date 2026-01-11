@@ -71,12 +71,12 @@ export function Visitors() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=100&fit=crop", title: "Service Schedule" },
-              { src: "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=150&h=100&fit=crop", title: "Directions" },
-              { src: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=150&h=100&fit=crop", title: "What to Wear" },
-              { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=100&fit=crop", title: "Orthodox Basics" },
-              { src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=150&h=100&fit=crop", title: "Children's Area" },
-              { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=150&h=100&fit=crop", title: "Coffee Hour" }
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=100&fit=crop", title: "Service Schedule" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=100&fit=crop", title: "Directions" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=100&fit=crop", title: "What to Wear" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=100&fit=crop", title: "Orthodox Basics" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=100&fit=crop", title: "Children's Area" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=100&fit=crop", title: "Coffee Hour" }
             ].map((link, index) => (
               <div key={index} className="text-center">
                 <img 
@@ -181,9 +181,9 @@ export function Visitors() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=100&fit=crop" },
-              { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=100&fit=crop" },
-              { src: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=200&h=100&fit=crop" },
-              { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=200&h=100&fit=crop" }
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=100&fit=crop" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=100&fit=crop" },
+              { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=100&fit=crop" }
             ].map((image, index) => (
               <img 
                 key={index}
@@ -241,19 +241,19 @@ export function Visitors() {
               {
                 title: "Frequently Asked Questions", 
                 description: "Common questions about Orthodoxy, services, and visiting our parish.",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop",
                 link: "/faq"
               },
               {
                 title: "Orthodox Beliefs",
                 description: "An introduction to Orthodox Christian theology and traditions.",
-                image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=300&h=200&fit=crop", 
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop", 
                 link: "/beliefs"
               },
               {
                 title: "Getting Here",
                 description: "Directions, parking information, and maps to our church.",
-                image: "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=300&h=200&fit=crop",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop",
                 link: "/directions"
               }
             ].map((link, index) => (
@@ -286,11 +286,11 @@ export function Visitors() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
               "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop",
-              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop", 
-              "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=200&h=200&fit=crop",
-              "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=200&h=200&fit=crop",
-              "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=200&h=200&fit=crop",
-              "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=200&h=200&fit=crop"
+              "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop", 
+              "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop",
+              "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop",
+              "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop",
+              "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop"
             ].map((image, index) => (
               <div key={index} className="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                 <img 

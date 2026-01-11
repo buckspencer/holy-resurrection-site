@@ -6,11 +6,11 @@ export function Home() {
 
 	const carouselImages = [
 		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
-		"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
-		"https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=600&fit=crop",
-		"https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=600&fit=crop",
-		"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=600&fit=crop",
-		"https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
 	];
 
 	useEffect(() => {
@@ -234,47 +234,65 @@ export function Home() {
 			{/* Visiting Orthodox Church Section */}
 			<section className="py-16 bg-cream relative">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="relative">
+					<div className="relative flex justify-center">
 						{/* Brown square container */}
-						<div className="bg-rust p-8 md:p-12 max-w-4xl">
-							<h2 className="font-heading text-2xl md:text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
-								Visiting a Church Can Feel Intimidating - Especially an Orthodox
-								One
-							</h2>
-							<div className="font-body text-cream leading-relaxed space-y-4 text-sm md:text-base">
-								<p>
-									Our distinctive Orthodox worship experience can initially feel
-									unfamiliar to newcomers:
-								</p>
-								<ul className="list-disc list-inside space-y-1 ml-4 text-sm">
-									<li>A sense of deep reverence and awe</li>
-									<li>Standing for most of the service</li>
-									<li>Beautiful chanting and incense</li>
-									<li>Kissing of icons and holy objects</li>
-								</ul>
-								<p className="font-bold text-sm">
-									• You don't need to know what to do to attend our Liturgy for
-									the first time.
-								</p>
-								<p className="text-sm">
-									• Our ushers will guide you through the experience.
-								</p>
-								<p className="text-sm">• Questions are always welcome.</p>
+						<div className="bg-rust p-8 md:p-16 w-[90%] min-h-[500px] md:min-h-[600px] relative pr-8 md:pr-16" style={{
+							backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0-30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+							backgroundSize: '60px 60px'
+						}}>
+							<div className="max-w-lg">
+								<h2 className="font-heading text-2xl md:text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
+									Visiting a Church Can Feel Intimidating - Especially an Orthodox
+									One
+								</h2>
+								<div className="font-body leading-relaxed">
+									{/* Red middle section */}
+									<div className="mt-8 mb-12">
+										<p className="text-red-300 mb-4 text-sm">
+											Short paragraph acknowledging common experiences:
+										</p>
+										<ul className="space-y-2 text-red-300 text-sm">
+											<li>• not knowing when to stand or sit</li>
+											<li>• unsure is visitors are welcome</li>
+											<li>• unsure of what Orthodoxy even is</li>
+										</ul>
+									</div>
+									
+									{/* Bottom cream section */}
+									<div className="space-y-2">
+										<p className="text-cream text-sm">
+											• You don't need to know what to do to visit us
+										</p>
+										<p className="text-cream text-sm">
+											• You're not expected to participate beyond your comfort level
+										</p>
+										<p className="text-cream text-sm">
+											• Questions are always welcome
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
 
-						{/* Hanging images on the right */}
-						<div className="hidden md:block absolute top-8 -right-4 space-y-4">
-							<img
-								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-								alt="Orthodox Worship"
-								className="w-48 h-48 object-cover shadow-lg"
-							/>
-							<img
-								src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
-								alt="Church Community"
-								className="w-48 h-48 object-cover shadow-lg"
-							/>
+							{/* Hanging images on the right */}
+							<div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 space-y-4">
+								<div className="relative">
+									<img
+										src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+										alt="Orthodox Worship"
+										className="w-72 h-64 object-cover shadow-lg"
+									/>
+									<div className="absolute inset-0 bg-rust/20"></div>
+								</div>
+								<div className="relative">
+									<img
+										src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+										alt="Church Community"
+										className="w-72 h-64 object-cover shadow-lg"
+									/>
+									<div className="absolute inset-0 bg-rust/20"></div>
+								</div>
+							</div>
+
 						</div>
 
 						{/* Mobile images */}
@@ -285,7 +303,7 @@ export function Home() {
 								className="w-full h-32 object-cover rounded shadow-lg"
 							/>
 							<img
-								src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
 								alt="Church Community"
 								className="w-full h-32 object-cover rounded shadow-lg"
 							/>
