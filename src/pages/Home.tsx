@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -60,15 +60,18 @@ export function Home() {
 								if (index === 3) {
 									// Static center with rays
 									return (
-										<div key="center" className="w-[36rem] h-[36rem] relative">
+										<div
+											key="center"
+											className="w-[42rem] h-[42rem] relative group transition-all duration-500 hover:scale-105"
+										>
 											{/* Golden Rays */}
-											<div className="absolute inset-0 z-0 -m-40">
+											<div className="absolute inset-0 z-10 -m-48">
 												{[...Array(32)].map((_, rayIndex) => {
 													const segments = [];
 													let currentPos = 0;
-													while (currentPos < 240) {
-														const segmentLength = 3 + Math.random() * 8;
-														const gapLength = 2 + Math.random() * 6;
+													while (currentPos < 500) {
+														const segmentLength = 6 + Math.random() * 15;
+														const gapLength = 4 + Math.random() * 12;
 														segments.push(
 															`transparent ${currentPos}px, transparent ${
 																currentPos + gapLength
@@ -86,13 +89,13 @@ export function Home() {
 															key={rayIndex}
 															className="absolute w-0.5 opacity-50"
 															style={{
-																height: "240px",
+																height: "500px",
 																left: "50%",
 																top: "27%",
 																transformOrigin: "0 0",
 																transform: `rotate(${
 																	rayIndex * 11.25
-																}deg) translateY(-140px) translateX(-1px)`,
+																}deg) translateY(-280px) translateX(-1px)`,
 																background: `linear-gradient(to bottom, ${segments.join(
 																	", "
 																)})`,
@@ -104,10 +107,13 @@ export function Home() {
 
 											{/* Center placeholder image */}
 											<div
-												className="w-full h-full transition-all duration-500 hover:scale-105 cursor-pointer relative z-10"
+												className="w-full h-full cursor-pointer relative z-10"
 												onClick={() => setSelectedImage(carouselImages[0])}
 											>
-												<div className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3" style={{backgroundColor: '#e8ca8b'}}>
+												<div
+													className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
+													style={{ backgroundColor: "#e8ca8b" }}
+												>
 													<img
 														src={carouselImages[0]}
 														alt="Church Life"
@@ -122,10 +128,13 @@ export function Home() {
 								return (
 									<div
 										key={index}
-										className={`${item.size} transition-all duration-500 hover:scale-105 cursor-pointer`}
+										className={`${item.size} transition-all duration-500 hover:scale-105 cursor-pointer relative z-20`}
 										onClick={() => item.src && setSelectedImage(item.src)}
 									>
-										<div className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3" style={{backgroundColor: '#e8ca8b'}}>
+										<div
+											className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
+											style={{ backgroundColor: "#e8ca8b" }}
+										>
 											{item.src && (
 												<img
 													src={item.src}
@@ -147,9 +156,14 @@ export function Home() {
 						<div className="flex justify-center">
 							<div
 								className="w-64 h-96 transition-all duration-500 cursor-pointer relative"
-								onClick={() => setSelectedImage(carouselImages[currentImageIndex])}
+								onClick={() =>
+									setSelectedImage(carouselImages[currentImageIndex])
+								}
 							>
-								<div className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3" style={{backgroundColor: '#e8ca8b'}}>
+								<div
+									className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
+									style={{ backgroundColor: "#e8ca8b" }}
+								>
 									<img
 										src={carouselImages[currentImageIndex]}
 										alt="Church Life"
@@ -158,14 +172,14 @@ export function Home() {
 								</div>
 							</div>
 						</div>
-						
+
 						{/* Progress dots */}
 						<div className="flex justify-center mt-4 space-x-2">
 							{carouselImages.map((_, index) => (
 								<div
 									key={index}
 									className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-										index === currentImageIndex ? 'bg-cream' : 'bg-cream/30'
+										index === currentImageIndex ? "bg-cream" : "bg-cream/30"
 									}`}
 								/>
 							))}
@@ -178,20 +192,22 @@ export function Home() {
 			<section className="bg-red pb-8 pt-8 relative">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 					<h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-cream mb-8 tracking-wider leading-tight">
-						HOLY RESURRECTION<br />ANTIOCHIAN ORTHODOX CHURCH
+						HOLY RESURRECTION
+						<br />
+						ANTIOCHIAN ORTHODOX CHURCH
 					</h1>
-					
+
 					<p className="font-quote text-3xl md:text-4xl text-cream italic mb-8 tracking-wide leading-relaxed">
 						Rooted in Tradition, Alive in Christ
 					</p>
-					
+
 					{/* Decorative ornament */}
 					<div className="flex justify-center mb-10">
 						<div className="text-cream/80 text-lg tracking-widest">
 							━━━ ◊ ◊ ◊ ━━━
 						</div>
 					</div>
-					
+
 					<p className="font-body text-xl md:text-2xl text-cream mb-4 font-medium tracking-wide">
 						Welcoming all who seek the ancient Christian faith
 					</p>
@@ -204,9 +220,9 @@ export function Home() {
 			{/* Dome Banner Section */}
 			<section className="bg-red">
 				<div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-					<img 
-						src="/landing-dome-banner.png" 
-						alt="Orthodox Church Dome Interior with Banner" 
+					<img
+						src="/landing-dome-banner.png"
+						alt="Orthodox Church Dome Interior with Banner"
 						className="w-full h-auto object-contain"
 					/>
 				</div>
@@ -221,12 +237,13 @@ export function Home() {
 					<div className="grid lg:grid-cols-2 gap-12 items-start">
 						<div>
 							<h2 className="font-heading text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
-								Visiting a Church Can Feel Intimidating - Especially an Orthodox One
+								Visiting a Church Can Feel Intimidating - Especially an Orthodox
+								One
 							</h2>
 							<div className="font-body text-cream leading-relaxed space-y-4 text-base">
 								<p>
-									Our distinctive Orthodox worship experience 
-									can initially feel unfamiliar to newcomers:
+									Our distinctive Orthodox worship experience can initially feel
+									unfamiliar to newcomers:
 								</p>
 								<ul className="list-disc list-inside space-y-2 ml-4">
 									<li>A sense of deep reverence and awe</li>
@@ -235,15 +252,11 @@ export function Home() {
 									<li>Kissing of icons and holy objects</li>
 								</ul>
 								<p className="font-bold">
-									• You don't need to know what to do to attend our
-									Liturgy for the first time.
+									• You don't need to know what to do to attend our Liturgy for
+									the first time.
 								</p>
-								<p>
-									• Our ushers will guide you through the experience.
-								</p>
-								<p>
-									• Questions are always welcome.
-								</p>
+								<p>• Our ushers will guide you through the experience.</p>
+								<p>• Questions are always welcome.</p>
 							</div>
 						</div>
 
