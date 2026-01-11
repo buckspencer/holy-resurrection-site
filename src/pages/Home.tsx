@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { TextWithSideImagesBlock } from "../components/TextWithSideImagesBlock";
+import { ImageWithTextBlock } from "../components/ImageWithTextBlock";
+import { QuickLinksGrid } from "../components/QuickLinksGrid";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -266,81 +268,66 @@ export function Home() {
 				]}
 			/>
 
-			{/* Life as a Church Section */}
-			<section className="py-16 bg-rust">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid lg:grid-cols-2 gap-12 items-center">
-						<div className="text-center">
-							<img
-								src="/church-couple-photo.jpg"
-								alt="Church Life"
-								className="w-full max-w-md mx-auto rounded-lg shadow-lg"
-							/>
-						</div>
+			<ImageWithTextBlock
+				backgroundColor="#F8F4F0"
+				title="We are a church that walks with you."
+				titleColor="#365A69"
+				titleStyle="script"
+				sections={[
+					{
+						text: "Short paragraph on:",
+						items: [
+							"• being part of the ancient church",
+							"• faithfulness to tradition",
+							"• pastoral care, patience, and hospitality"
+						],
+						textColor: "#fca5a5"
+					},
+					{
+						heading: "Qualifying statement",
+						headingColor: "#fca5a5",
+						text: "Short paragraph on:",
+						items: [
+							"• apostolic faith",
+							"• living parish community",
+							"• guided by clergy and prayer, not trends"
+						],
+						textColor: "#6b7280"
+					}
+				]}
+				image={{
+					src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+					alt: "Church Life",
+					position: "right"
+				}}
+				buttonText="What to Expect on Sunday"
+				buttonColor="#8B9A6B"
+			/>
 
-						<div>
-							<h2 className="font-quote text-3xl text-cream mb-6 italic leading-tight">
-								Life as a church that meets
-								<br />
-								with Jesus
-							</h2>
-							<div className="font-body text-cream leading-relaxed space-y-4 text-sm">
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam, quis nostrud exercitation ullamco
-									laboris nisi ut aliquip ex ea commodo consequat.
-								</p>
-								<p>
-									Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint
-									occaecat cupidatat non proident, sunt in culpa qui officia
-									deserunt mollit anim id est laborum.
-								</p>
-							</div>
 
-							<button className="mt-6 bg-cream text-rust font-body px-6 py-2 text-sm uppercase tracking-wide hover:bg-cream/90 transition-colors">
-								Read More
-							</button>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			{/* What's New Here Section */}
-			<section className="py-16 bg-blue">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="font-heading text-3xl text-cream text-center mb-12 uppercase tracking-wide">
-						What's New Here
-					</h2>
-
-					<div className="grid md:grid-cols-3 gap-8">
-						{[
-							{
-								image: "/news-photo-1.jpg",
-								title: "Lorem ipsum dolor sit",
-							},
-							{
-								image: "/news-photo-2.jpg",
-								title: "Consectetur adipiscing elit",
-							},
-							{
-								image: "/news-photo-3.jpg",
-								title: "Sed do eiusmod tempor",
-							},
-						].map((news, index) => (
-							<div key={index} className="text-center">
-								<img
-									src={news.image}
-									alt={news.title}
-									className="w-full h-48 object-cover rounded mb-4"
-								/>
-								<h3 className="font-body text-cream text-sm">{news.title}</h3>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+			<QuickLinksGrid
+				title="Quick Links"
+				links={[
+					{
+						image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+						alt: "Contact Us",
+						buttonText: "Contact Us",
+						buttonColor: "#8B9A6B"
+					},
+					{
+						image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+						alt: "Donate",
+						buttonText: "Donate",
+						buttonColor: "#8B9A6B"
+					},
+					{
+						image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+						alt: "Join Us Online",
+						buttonText: "Join Us Online",
+						buttonColor: "#8B9A6B"
+					}
+				]}
+			/>
 
 			{/* Principal Saint Visit Section */}
 			<section className="py-16 bg-green">
