@@ -1,44 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+	const carouselImages = [
+		"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=600&fit=crop",
+		"https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=400&h=600&fit=crop",
+	];
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+		}, 3500);
+		return () => clearInterval(interval);
+	}, [carouselImages.length]);
 
 	return (
 		<div className="bg-red">
 			{/* Hero Carousel Section */}
 			<section className="bg-red py-16 relative overflow-hidden">
-				<div className="w-full px-4">
+				{/* Desktop Carousel */}
+				<div className="hidden md:block w-full px-4">
 					<div className="relative max-w-screen-2xl mx-auto">
-						{/* Carousel Images - These will rotate */}
 						<div className="flex justify-center items-center space-x-8">
 							{[
 								{
-									src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+									src: carouselImages[0],
 									size: "w-96 h-[28rem]",
 								},
 								{
-									src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+									src: carouselImages[1],
 									size: "w-96 h-[28rem]",
 								},
 								{
-									src: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=600&fit=crop",
+									src: carouselImages[2],
 									size: "w-96 h-[28rem]",
 								},
-
 								{
 									/* Static Center Icon - Never Changes */
 								},
-
 								{
-									src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=600&fit=crop",
+									src: carouselImages[3],
 									size: "w-96 h-[28rem]",
 								},
 								{
-									src: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=600&fit=crop",
+									src: carouselImages[4],
 									size: "w-96 h-[28rem]",
 								},
 								{
-									src: "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=400&h=600&fit=crop",
+									src: carouselImages[5],
 									size: "w-96 h-[28rem]",
 								},
 							].map((item, index) => {
@@ -46,15 +61,14 @@ export function Home() {
 									// Static center with rays
 									return (
 										<div key="center" className="w-[36rem] h-[36rem] relative">
-											{/* Golden Rays - positioned to sprout from the arch edges, behind other images */}
+											{/* Golden Rays */}
 											<div className="absolute inset-0 z-0 -m-40">
 												{[...Array(32)].map((_, rayIndex) => {
-													// Generate random segments for each ray
 													const segments = [];
 													let currentPos = 0;
 													while (currentPos < 240) {
-														const segmentLength = 3 + Math.random() * 8; // Random length 3-11px
-														const gapLength = 2 + Math.random() * 6; // Random gap 2-8px
+														const segmentLength = 3 + Math.random() * 8;
+														const gapLength = 2 + Math.random() * 6;
 														segments.push(
 															`transparent ${currentPos}px, transparent ${
 																currentPos + gapLength
@@ -91,15 +105,11 @@ export function Home() {
 											{/* Center placeholder image */}
 											<div
 												className="w-full h-full transition-all duration-500 hover:scale-105 cursor-pointer relative z-10"
-												onClick={() =>
-													setSelectedImage(
-														"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop"
-													)
-												}
+												onClick={() => setSelectedImage(carouselImages[0])}
 											>
 												<div className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3" style={{backgroundColor: '#e8ca8b'}}>
 													<img
-														src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop"
+														src={carouselImages[0]}
 														alt="Church Life"
 														className="w-full h-full object-cover rounded-t-full rounded-b-lg"
 													/>
@@ -125,6 +135,38 @@ export function Home() {
 									</div>
 								);
 							})}
+						</div>
+					</div>
+				</div>
+
+				{/* Mobile Single Image Carousel */}
+				<div className="block md:hidden w-full px-4">
+					<div className="relative max-w-sm mx-auto">
+						<div className="flex justify-center">
+							<div
+								className="w-64 h-96 transition-all duration-500 cursor-pointer relative"
+								onClick={() => setSelectedImage(carouselImages[currentImageIndex])}
+							>
+								<div className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3" style={{backgroundColor: '#e8ca8b'}}>
+									<img
+										src={carouselImages[currentImageIndex]}
+										alt="Church Life"
+										className="w-full h-full object-cover rounded-t-full rounded-b-lg transition-opacity duration-500"
+									/>
+								</div>
+							</div>
+						</div>
+						
+						{/* Progress dots */}
+						<div className="flex justify-center mt-4 space-x-2">
+							{carouselImages.map((_, index) => (
+								<div
+									key={index}
+									className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+										index === currentImageIndex ? 'bg-cream' : 'bg-cream/30'
+									}`}
+								/>
+							))}
 						</div>
 					</div>
 				</div>
