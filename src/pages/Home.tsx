@@ -131,7 +131,7 @@ export function Home() {
 			</section>
 
 			{/* Main Hero Section */}
-			<section className="bg-red py-20 relative">
+			<section className="bg-red pb-8 pt-8 relative">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 					<h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-cream mb-8 tracking-wider leading-tight">
 						HOLY RESURRECTION<br />ANTIOCHIAN ORTHODOX CHURCH
@@ -151,83 +151,75 @@ export function Home() {
 					<p className="font-body text-xl md:text-2xl text-cream mb-4 font-medium tracking-wide">
 						Welcoming all who seek the ancient Christian faith
 					</p>
-					<p className="font-body text-lg md:text-xl text-cream/90 mb-12 tracking-wide">
+					<p className="font-body text-lg md:text-xl text-cream/90 mb-0 tracking-wide">
 						Join us for worship, prayer, and life in Christ in Tucson, AZ
 					</p>
-
-					{/* Dome Interior Image with integrated banner */}
-					<img 
-						src="/landing-dome-banner.png" 
-						alt="Orthodox Church Dome Interior with Banner" 
-						className="w-full max-w-5xl mx-auto mb-12 object-contain object-bottom"
-					/>
-
-					<div className="bg-cream/10 backdrop-blur-sm rounded-lg p-8 max-w-lg mx-auto">
-						<img
-							src="/father-gabriel-portrait.jpg"
-							alt="Fr. Gabriel"
-							className="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-cream"
-						/>
-						<h3 className="font-heading text-xl text-cream mb-2">
-							Fr. Gabriel Bilas
-						</h3>
-						<p className="font-body text-cream/90">Pastor</p>
-					</div>
 				</div>
 			</section>
 
-			{/* Biographical Section */}
-			<section className="py-16 bg-cream">
+			{/* Dome Banner Section */}
+			<section className="bg-red">
+				<div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+					<img 
+						src="/landing-dome-banner.png" 
+						alt="Orthodox Church Dome Interior with Banner" 
+						className="w-full h-auto object-contain"
+					/>
+				</div>
+			</section>
+
+			{/* Visiting Orthodox Church Section */}
+			<section className="py-12 bg-rust">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid lg:grid-cols-2 gap-12 items-start">
 						<div>
-							<h2 className="font-heading text-2xl text-rust mb-6 uppercase tracking-wide">
-								Brief Bio
+							<h2 className="font-heading text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
+								Visiting a Church Can Feel Intimidating - Especially an Orthodox One
 							</h2>
-							<div className="font-body text-rust leading-relaxed space-y-4 text-sm">
+							<div className="font-body text-cream leading-relaxed space-y-4 text-base">
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam, quis nostrud exercitation ullamco
-									laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-									irure dolor in reprehenderit in voluptate velit esse cillum
-									dolore eu fugiat nulla pariatur.
+									Our distinctive Orthodox worship experience 
+									can initially feel unfamiliar to newcomers:
+								</p>
+								<ul className="list-disc list-inside space-y-2 ml-4">
+									<li>A sense of deep reverence and awe</li>
+									<li>Standing for most of the service</li>
+									<li>Beautiful chanting and incense</li>
+									<li>Kissing of icons and holy objects</li>
+								</ul>
+								<p className="font-bold">
+									• You don't need to know what to do to attend our
+									Liturgy for the first time.
 								</p>
 								<p>
-									Excepteur sint occaecat cupidatat non proident, sunt in culpa
-									qui officia deserunt mollit anim id est laborum. Sed ut
-									perspiciatis unde omnis iste natus error sit voluptatem
-									accusantium doloremque laudantium.
+									• Our ushers will guide you through the experience.
 								</p>
 								<p>
-									Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
-									et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-									enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-									aut fugit.
+									• Questions are always welcome.
 								</p>
 							</div>
 						</div>
 
 						<div className="grid grid-cols-2 gap-4">
 							<img
-								src="/bio-photo-1.jpg"
-								alt="Church Photo 1"
-								className="w-full h-32 object-cover rounded"
+								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+								alt="Orthodox Worship"
+								className="w-full h-40 object-cover rounded-lg shadow-lg"
 							/>
 							<img
-								src="/bio-photo-2.jpg"
-								alt="Church Photo 2"
-								className="w-full h-32 object-cover rounded"
+								src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+								alt="Church Community"
+								className="w-full h-40 object-cover rounded-lg shadow-lg"
 							/>
 							<img
-								src="/bio-photo-3.jpg"
-								alt="Church Photo 3"
-								className="w-full h-32 object-cover rounded"
+								src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=300&fit=crop"
+								alt="Orthodox Tradition"
+								className="w-full h-40 object-cover rounded-lg shadow-lg"
 							/>
 							<img
-								src="/bio-photo-4.jpg"
-								alt="Church Photo 4"
-								className="w-full h-32 object-cover rounded"
+								src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=300&fit=crop"
+								alt="Liturgical Life"
+								className="w-full h-40 object-cover rounded-lg shadow-lg"
 							/>
 						</div>
 					</div>
