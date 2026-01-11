@@ -51,7 +51,9 @@ export function Header() {
               <img 
                 src="/logo.png" 
                 alt="Holy Resurrection Antiochian Orthodox Church"
-                className="w-56 h-56 md:w-64 md:h-64 object-contain"
+                className={`object-contain md:w-64 md:h-64 ${
+                  mobileMenuOpen ? 'w-40 h-40' : 'w-56 h-56'
+                }`}
               />
             </Link>
 
@@ -143,7 +145,7 @@ export function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-primary px-4 pb-4 absolute w-full z-10">
+        <div className="md:hidden bg-primary px-4 pb-4 absolute w-full z-50 mt-10">
           {navLinks.map((link) => (
             <div key={link.name} className="border-b border-white/10">
               {link.path ? (
