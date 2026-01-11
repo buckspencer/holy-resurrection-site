@@ -212,6 +212,9 @@ export function Home() {
 				</div>
 			</section>
 
+			{/* Red spacing section */}
+			<section className="py-16 bg-red"></section>
+
 			{/* Visiting Orthodox Church Section */}
 			<section className="py-12 bg-rust">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
