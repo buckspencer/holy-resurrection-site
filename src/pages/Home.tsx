@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { TextWithSideImagesBlock } from "../components/TextWithSideImagesBlock";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -231,86 +232,39 @@ export function Home() {
 				</section>
 			</div>
 
-			{/* Visiting Orthodox Church Section */}
-			<section className="py-16 bg-cream relative">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="relative flex justify-center">
-						{/* Brown square container */}
-						<div className="bg-rust p-8 md:p-16 w-[90%] min-h-[500px] md:min-h-[600px] relative pr-8 md:pr-16" style={{
-							backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0-30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-							backgroundSize: '60px 60px'
-						}}>
-							<div className="max-w-lg">
-								<h2 className="font-heading text-2xl md:text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
-									Visiting a Church Can Feel Intimidating - Especially an Orthodox
-									One
-								</h2>
-								<div className="font-body leading-relaxed">
-									{/* Red middle section */}
-									<div className="mt-8 mb-12">
-										<p className="text-red-300 mb-4 text-sm">
-											Short paragraph acknowledging common experiences:
-										</p>
-										<ul className="space-y-2 text-red-300 text-sm">
-											<li>• not knowing when to stand or sit</li>
-											<li>• unsure is visitors are welcome</li>
-											<li>• unsure of what Orthodoxy even is</li>
-										</ul>
-									</div>
-									
-									{/* Bottom cream section */}
-									<div className="space-y-2">
-										<p className="text-cream text-sm">
-											• You don't need to know what to do to visit us
-										</p>
-										<p className="text-cream text-sm">
-											• You're not expected to participate beyond your comfort level
-										</p>
-										<p className="text-cream text-sm">
-											• Questions are always welcome
-										</p>
-									</div>
-								</div>
-							</div>
-
-							{/* Hanging images on the right */}
-							<div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 space-y-4">
-								<div className="relative">
-									<img
-										src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-										alt="Orthodox Worship"
-										className="w-72 h-64 object-cover shadow-lg"
-									/>
-									<div className="absolute inset-0 bg-rust/20"></div>
-								</div>
-								<div className="relative">
-									<img
-										src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-										alt="Church Community"
-										className="w-72 h-64 object-cover shadow-lg"
-									/>
-									<div className="absolute inset-0 bg-rust/20"></div>
-								</div>
-							</div>
-
-						</div>
-
-						{/* Mobile images */}
-						<div className="md:hidden mt-6 grid grid-cols-2 gap-4">
-							<img
-								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-								alt="Orthodox Worship"
-								className="w-full h-32 object-cover rounded shadow-lg"
-							/>
-							<img
-								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-								alt="Church Community"
-								className="w-full h-32 object-cover rounded shadow-lg"
-							/>
-						</div>
-					</div>
-				</div>
-			</section>
+			<TextWithSideImagesBlock
+				title="Visiting a Church Can Feel Intimidating - Especially an Orthodox One"
+				sections={[
+					{
+						text: "Short paragraph acknowledging common experiences:",
+						items: [
+							"• not knowing when to stand or sit",
+							"• unsure is visitors are welcome", 
+							"• unsure of what Orthodoxy even is"
+						],
+						textColor: "#fca5a5"
+					},
+					{
+						text: "",
+						items: [
+							"• You don't need to know what to do to visit us",
+							"• You're not expected to participate beyond your comfort level",
+							"• Questions are always welcome"
+						],
+						textColor: "#f5f5dc"
+					}
+				]}
+				images={[
+					{
+						src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+						alt: "Orthodox Worship"
+					},
+					{
+						src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+						alt: "Church Community"
+					}
+				]}
+			/>
 
 			{/* Life as a Church Section */}
 			<section className="py-16 bg-rust">
