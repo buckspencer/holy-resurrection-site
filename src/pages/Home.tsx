@@ -123,14 +123,16 @@ export function Home() {
 									<div
 										key={index}
 										className={`${item.size} transition-all duration-500 hover:scale-105 cursor-pointer`}
-										onClick={() => setSelectedImage(item.src)}
+										onClick={() => item.src && setSelectedImage(item.src)}
 									>
 										<div className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3" style={{backgroundColor: '#e8ca8b'}}>
-											<img
-												src={item.src}
-												alt="Church Life"
-												className="w-full h-full object-cover rounded-t-full rounded-b-lg"
-											/>
+											{item.src && (
+												<img
+													src={item.src}
+													alt="Church Life"
+													className="w-full h-full object-cover rounded-t-full rounded-b-lg"
+												/>
+											)}
 										</div>
 									</div>
 								);
