@@ -21,265 +21,273 @@ export function Home() {
 	}, [carouselImages.length]);
 
 	return (
-		<div className="bg-red">
-			{/* Hero Carousel Section */}
-			<section className="bg-red py-16 relative overflow-hidden">
-				{/* Desktop Carousel */}
-				<div className="hidden md:block w-full px-4">
-					<div className="relative max-w-screen-2xl mx-auto">
-						<div className="flex justify-center items-center space-x-8">
-							{[
-								{
-									src: carouselImages[0],
-									size: "w-96 h-[28rem]",
-								},
-								{
-									src: carouselImages[1],
-									size: "w-96 h-[28rem]",
-								},
-								{
-									src: carouselImages[2],
-									size: "w-96 h-[28rem]",
-								},
-								{
-									/* Static Center Icon - Never Changes */
-								},
-								{
-									src: carouselImages[3],
-									size: "w-96 h-[28rem]",
-								},
-								{
-									src: carouselImages[4],
-									size: "w-96 h-[28rem]",
-								},
-								{
-									src: carouselImages[5],
-									size: "w-96 h-[28rem]",
-								},
-							].map((item, index) => {
-								if (index === 3) {
-									// Static center with rays
+		<div>
+			{/* Red wrapper for top sections */}
+			<div className="bg-red -mt-32 pt-32">
+				{/* Hero Carousel Section */}
+				<section className="pt-24 pb-16 relative">
+					{/* Desktop Carousel */}
+					<div className="hidden md:block w-full px-4">
+						<div className="relative max-w-screen-2xl mx-auto">
+							<div className="flex justify-center items-center space-x-8">
+								{[
+									{
+										src: carouselImages[0],
+										size: "w-96 h-[28rem]",
+									},
+									{
+										src: carouselImages[1],
+										size: "w-96 h-[28rem]",
+									},
+									{
+										src: carouselImages[2],
+										size: "w-96 h-[28rem]",
+									},
+									{
+										/* Static Center Icon - Never Changes */
+									},
+									{
+										src: carouselImages[3],
+										size: "w-96 h-[28rem]",
+									},
+									{
+										src: carouselImages[4],
+										size: "w-96 h-[28rem]",
+									},
+									{
+										src: carouselImages[5],
+										size: "w-96 h-[28rem]",
+									},
+								].map((item, index) => {
+									if (index === 3) {
+										// Static center with rays
+										return (
+											<div
+												key="center"
+												className="w-[42rem] h-[42rem] relative group transition-all duration-500 hover:scale-105"
+											>
+												{/* Golden Rays */}
+												<div className="absolute inset-0 z-10 -m-48">
+													{[...Array(32)].map((_, rayIndex) => {
+														const segments = [];
+														let currentPos = 0;
+														while (currentPos < 500) {
+															const segmentLength = 6 + Math.random() * 60;
+															const gapLength = 4 + Math.random() * 12;
+															segments.push(
+																`transparent ${currentPos}px, transparent ${
+																	currentPos + gapLength
+																}px, #facc15 ${
+																	currentPos + gapLength
+																}px, #fbbf24 ${
+																	currentPos + gapLength + segmentLength
+																}px`
+															);
+															currentPos += gapLength + segmentLength;
+														}
+
+														return (
+															<div
+																key={rayIndex}
+																className="absolute w-0.5 opacity-50"
+																style={{
+																	height: "500px",
+																	left: "50%",
+																	top: "34%",
+																	transformOrigin: "0 0",
+																	transform: `rotate(${
+																		rayIndex * 110.25
+																	}deg) translateY(-280px) translateX(-1px)`,
+																	background: `linear-gradient(to bottom, ${segments.join(
+																		", "
+																	)})`,
+																}}
+															/>
+														);
+													})}
+												</div>
+
+												{/* Center placeholder image */}
+												<div
+													className="w-full h-full cursor-pointer relative z-10"
+													onClick={() => setSelectedImage(carouselImages[0])}
+												>
+													<div
+														className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
+														style={{ backgroundColor: "#e8ca8b" }}
+													>
+														<img
+															src={carouselImages[0]}
+															alt="Church Life"
+															className="w-full h-full object-cover rounded-t-full rounded-b-lg"
+														/>
+													</div>
+												</div>
+											</div>
+										);
+									}
+
 									return (
 										<div
-											key="center"
-											className="w-[42rem] h-[42rem] relative group transition-all duration-500 hover:scale-105"
+											key={index}
+											className={`${item.size} transition-all duration-500 hover:scale-105 cursor-pointer relative z-20`}
+											onClick={() => item.src && setSelectedImage(item.src)}
 										>
-											{/* Golden Rays */}
-											<div className="absolute inset-0 z-10 -m-48">
-												{[...Array(32)].map((_, rayIndex) => {
-													const segments = [];
-													let currentPos = 0;
-													while (currentPos < 500) {
-														const segmentLength = 6 + Math.random() * 15;
-														const gapLength = 4 + Math.random() * 12;
-														segments.push(
-															`transparent ${currentPos}px, transparent ${
-																currentPos + gapLength
-															}px, #facc15 ${
-																currentPos + gapLength
-															}px, #fbbf24 ${
-																currentPos + gapLength + segmentLength
-															}px`
-														);
-														currentPos += gapLength + segmentLength;
-													}
-
-													return (
-														<div
-															key={rayIndex}
-															className="absolute w-0.5 opacity-50"
-															style={{
-																height: "500px",
-																left: "50%",
-																top: "27%",
-																transformOrigin: "0 0",
-																transform: `rotate(${
-																	rayIndex * 11.25
-																}deg) translateY(-280px) translateX(-1px)`,
-																background: `linear-gradient(to bottom, ${segments.join(
-																	", "
-																)})`,
-															}}
-														/>
-													);
-												})}
-											</div>
-
-											{/* Center placeholder image */}
 											<div
-												className="w-full h-full cursor-pointer relative z-10"
-												onClick={() => setSelectedImage(carouselImages[0])}
+												className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
+												style={{ backgroundColor: "#e8ca8b" }}
 											>
-												<div
-													className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
-													style={{ backgroundColor: "#e8ca8b" }}
-												>
+												{item.src && (
 													<img
-														src={carouselImages[0]}
+														src={item.src}
 														alt="Church Life"
 														className="w-full h-full object-cover rounded-t-full rounded-b-lg"
 													/>
-												</div>
+												)}
 											</div>
 										</div>
 									);
-								}
-
-								return (
-									<div
-										key={index}
-										className={`${item.size} transition-all duration-500 hover:scale-105 cursor-pointer relative z-20`}
-										onClick={() => item.src && setSelectedImage(item.src)}
-									>
-										<div
-											className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
-											style={{ backgroundColor: "#e8ca8b" }}
-										>
-											{item.src && (
-												<img
-													src={item.src}
-													alt="Church Life"
-													className="w-full h-full object-cover rounded-t-full rounded-b-lg"
-												/>
-											)}
-										</div>
-									</div>
-								);
-							})}
+								})}
+							</div>
 						</div>
 					</div>
-				</div>
 
-				{/* Mobile Single Image Carousel */}
-				<div className="block md:hidden w-full px-4">
-					<div className="relative max-w-sm mx-auto">
-						<div className="flex justify-center">
-							<div
-								className="w-64 h-96 transition-all duration-500 cursor-pointer relative"
-								onClick={() =>
-									setSelectedImage(carouselImages[currentImageIndex])
-								}
-							>
+					{/* Mobile Single Image Carousel */}
+					<div className="block md:hidden w-full px-4">
+						<div className="relative max-w-sm mx-auto">
+							<div className="flex justify-center">
 								<div
-									className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
-									style={{ backgroundColor: "#e8ca8b" }}
+									className="w-64 h-96 transition-all duration-500 cursor-pointer relative"
+									onClick={() =>
+										setSelectedImage(carouselImages[currentImageIndex])
+									}
 								>
-									<img
-										src={carouselImages[currentImageIndex]}
-										alt="Church Life"
-										className="w-full h-full object-cover rounded-t-full rounded-b-lg transition-opacity duration-500"
-									/>
+									<div
+										className="w-full h-full rounded-t-full rounded-b-lg shadow-lg p-3"
+										style={{ backgroundColor: "#e8ca8b" }}
+									>
+										<img
+											src={carouselImages[currentImageIndex]}
+											alt="Church Life"
+											className="w-full h-full object-cover rounded-t-full rounded-b-lg transition-opacity duration-500"
+										/>
+									</div>
 								</div>
+							</div>
+
+							{/* Progress dots */}
+							<div className="flex justify-center mt-4 space-x-2">
+								{carouselImages.map((_, index) => (
+									<div
+										key={index}
+										className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+											index === currentImageIndex ? "bg-cream" : "bg-cream/30"
+										}`}
+									/>
+								))}
+							</div>
+						</div>
+					</div>
+				</section>
+
+				{/* Main Hero Section */}
+				<section className="pb-8 pt-8 relative">
+					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+						<h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-cream mb-8 tracking-wider leading-tight">
+							HOLY RESURRECTION
+							<br />
+							ANTIOCHIAN ORTHODOX CHURCH
+						</h1>
+
+						<p className="font-quote text-3xl md:text-4xl text-cream italic mb-8 tracking-wide leading-relaxed">
+							Rooted in Tradition, Alive in Christ
+						</p>
+
+						{/* Decorative ornament */}
+						<div className="flex justify-center mb-10">
+							<div className="text-cream/80 text-lg tracking-widest">
+								━━━ ◊ ◊ ◊ ━━━
 							</div>
 						</div>
 
-						{/* Progress dots */}
-						<div className="flex justify-center mt-4 space-x-2">
-							{carouselImages.map((_, index) => (
-								<div
-									key={index}
-									className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-										index === currentImageIndex ? "bg-cream" : "bg-cream/30"
-									}`}
-								/>
-							))}
-						</div>
+						<p className="font-body text-xl md:text-2xl text-cream mb-4 font-medium tracking-wide">
+							Welcoming all who seek the ancient Christian faith
+						</p>
+						<p className="font-body text-lg md:text-xl text-cream/90 mb-0 tracking-wide">
+							Join us for worship, prayer, and life in Christ in Tucson, AZ
+						</p>
 					</div>
-				</div>
-			</section>
+				</section>
 
-			{/* Main Hero Section */}
-			<section className="bg-red pb-8 pt-8 relative">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-cream mb-8 tracking-wider leading-tight">
-						HOLY RESURRECTION
-						<br />
-						ANTIOCHIAN ORTHODOX CHURCH
-					</h1>
-
-					<p className="font-quote text-3xl md:text-4xl text-cream italic mb-8 tracking-wide leading-relaxed">
-						Rooted in Tradition, Alive in Christ
-					</p>
-
-					{/* Decorative ornament */}
-					<div className="flex justify-center mb-10">
-						<div className="text-cream/80 text-lg tracking-widest">
-							━━━ ◊ ◊ ◊ ━━━
-						</div>
+				{/* Dome Banner Section */}
+				<section>
+					<div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+						<img
+							src="/landing-dome-banner.png"
+							alt="Orthodox Church Dome Interior with Banner"
+							className="w-full h-auto object-contain"
+						/>
 					</div>
-
-					<p className="font-body text-xl md:text-2xl text-cream mb-4 font-medium tracking-wide">
-						Welcoming all who seek the ancient Christian faith
-					</p>
-					<p className="font-body text-lg md:text-xl text-cream/90 mb-0 tracking-wide">
-						Join us for worship, prayer, and life in Christ in Tucson, AZ
-					</p>
-				</div>
-			</section>
-
-			{/* Dome Banner Section */}
-			<section className="bg-red">
-				<div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-					<img
-						src="/landing-dome-banner.png"
-						alt="Orthodox Church Dome Interior with Banner"
-						className="w-full h-auto object-contain"
-					/>
-				</div>
-			</section>
-
-			{/* Red spacing section */}
-			<section className="py-16 bg-red"></section>
+				</section>
+			</div>
 
 			{/* Visiting Orthodox Church Section */}
-			<section className="py-12 bg-rust">
+			<section className="py-16 bg-cream relative">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid lg:grid-cols-2 gap-12 items-start">
-						<div>
-							<h2 className="font-heading text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
+					<div className="relative">
+						{/* Brown square container */}
+						<div className="bg-rust p-8 md:p-12 max-w-4xl">
+							<h2 className="font-heading text-2xl md:text-3xl text-cream mb-6 uppercase tracking-wide font-bold">
 								Visiting a Church Can Feel Intimidating - Especially an Orthodox
 								One
 							</h2>
-							<div className="font-body text-cream leading-relaxed space-y-4 text-base">
+							<div className="font-body text-cream leading-relaxed space-y-4 text-sm md:text-base">
 								<p>
 									Our distinctive Orthodox worship experience can initially feel
 									unfamiliar to newcomers:
 								</p>
-								<ul className="list-disc list-inside space-y-2 ml-4">
+								<ul className="list-disc list-inside space-y-1 ml-4 text-sm">
 									<li>A sense of deep reverence and awe</li>
 									<li>Standing for most of the service</li>
 									<li>Beautiful chanting and incense</li>
 									<li>Kissing of icons and holy objects</li>
 								</ul>
-								<p className="font-bold">
+								<p className="font-bold text-sm">
 									• You don't need to know what to do to attend our Liturgy for
 									the first time.
 								</p>
-								<p>• Our ushers will guide you through the experience.</p>
-								<p>• Questions are always welcome.</p>
+								<p className="text-sm">
+									• Our ushers will guide you through the experience.
+								</p>
+								<p className="text-sm">• Questions are always welcome.</p>
 							</div>
 						</div>
 
-						<div className="grid grid-cols-2 gap-4">
+						{/* Hanging images on the right */}
+						<div className="hidden md:block absolute top-8 -right-4 space-y-4">
 							<img
 								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
 								alt="Orthodox Worship"
-								className="w-full h-40 object-cover rounded-lg shadow-lg"
+								className="w-48 h-48 object-cover shadow-lg"
 							/>
 							<img
 								src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
 								alt="Church Community"
-								className="w-full h-40 object-cover rounded-lg shadow-lg"
+								className="w-48 h-48 object-cover shadow-lg"
+							/>
+						</div>
+
+						{/* Mobile images */}
+						<div className="md:hidden mt-6 grid grid-cols-2 gap-4">
+							<img
+								src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+								alt="Orthodox Worship"
+								className="w-full h-32 object-cover rounded shadow-lg"
 							/>
 							<img
-								src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=300&fit=crop"
-								alt="Orthodox Tradition"
-								className="w-full h-40 object-cover rounded-lg shadow-lg"
-							/>
-							<img
-								src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=300&fit=crop"
-								alt="Liturgical Life"
-								className="w-full h-40 object-cover rounded-lg shadow-lg"
+								src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+								alt="Church Community"
+								className="w-full h-32 object-cover rounded shadow-lg"
 							/>
 						</div>
 					</div>

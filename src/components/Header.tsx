@@ -33,6 +33,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null)
   const location = useLocation()
+  const isHome = location.pathname === '/'
 
   const isActiveLink = (link: any) => {
     if (link.path && location.pathname === link.path) return true
@@ -44,7 +45,7 @@ export function Header() {
 
   return (
     <header className="relative mb-16 md:mb-20">
-      <div className="bg-primary relative">
+      <div className={`${isHome ? 'bg-red' : 'bg-primary'} relative`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex items-center h-20">
             <Link to="/" className="absolute left-0 top-2 z-30 flex-shrink-0">
@@ -134,7 +135,7 @@ export function Header() {
         </nav>
       </div>
 
-      <div className="h-10 bg-primary relative overflow-hidden z-10">
+      <div className={`h-10 ${isHome ? 'bg-red' : 'bg-primary'} relative overflow-hidden z-10`}>
         <div className="absolute inset-0 flex items-center justify-center">
           <img 
             src="/nav-banner.png" 
