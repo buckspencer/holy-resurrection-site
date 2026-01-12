@@ -4,6 +4,7 @@ import { ImageWithTextBlock } from "../components/ImageWithTextBlock";
 import { QuickLinksGrid } from "../components/QuickLinksGrid";
 import { IconWithTextGrid } from "../components/IconWithTextGrid";
 import { BannerImage } from "../components/BannerImage";
+import { OrnateTextWithImage } from "../components/OrnateTextWithImage";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -360,43 +361,29 @@ export function Home() {
 				alt="Censor Banner"
 			/>
 
-			{/* Footer Info Section */}
-			<section className="py-12 bg-blue">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<div className="grid md:grid-cols-3 gap-8 text-cream">
-						<div>
-							<h3 className="font-heading text-lg mb-4 uppercase tracking-wide">
-								Address
-							</h3>
-							<p className="font-body text-sm">
-								5910 E. 5th Street
-								<br />
-								Tucson, Arizona 85711
-							</p>
-						</div>
-						<div>
-							<h3 className="font-heading text-lg mb-4 uppercase tracking-wide">
-								Contact
-							</h3>
-							<p className="font-body text-sm">
-								(520) 622-2265
-								<br />
-								info@holyresurrectiontucson.org
-							</p>
-						</div>
-						<div>
-							<h3 className="font-heading text-lg mb-4 uppercase tracking-wide">
-								Service Times
-							</h3>
-							<p className="font-body text-sm">
-								Saturday: 6:00 PM Vespers
-								<br />
-								Sunday: 10:00 AM Divine Liturgy
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+			<OrnateTextWithImage
+				title="Your First Visit"
+				steps={[
+					{
+						title: "Come as you are",
+						description: "Attend a Sunday Divine Liturgy or Vespers"
+					},
+					{
+						title: "Observe and receive",
+						description: "No pressure to participate—simply be present"
+					},
+					{
+						title: "Stay and connect",
+						description: "Join us for fellowship and conversation"
+					}
+				]}
+				image={{
+					src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+					alt: "Church Visit"
+				}}
+				buttonText="Plan Your Visit"
+			/>
+
 
 			{/* Image Modal */}
 			{selectedImage && (
