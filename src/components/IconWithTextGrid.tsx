@@ -20,7 +20,6 @@ export function IconWithTextGrid({
 	titleColor = "#945643",
 	items,
 }: IconWithTextGridProps) {
-	const defaultPattern = `url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M100 100m-80 0a80 80 0 1 1 160 0a80 80 0 1 1 -160 0'/%3E%3Cpath d='M100 100m-60 0a60 60 0 1 1 120 0a60 60 0 1 1 -120 0'/%3E%3Cpath d='M100 100m-40 0a40 40 0 1 1 80 0a40 40 0 1 1 -80 0'/%3E%3Cpath d='M100 100m-20 0a20 20 0 1 1 40 0a20 20 0 1 1 -40 0'/%3E%3C/g%3E%3C/svg%3E")`;
 
 	return (
 		<section

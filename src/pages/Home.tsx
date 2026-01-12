@@ -272,7 +272,6 @@ export function Home() {
 			/>
 
 			<ImageWithTextBlock
-				backgroundColor="#F8F4F0"
 				title="We are a church that walks with you."
 				titleColor="#365A69"
 				titleStyle="script"

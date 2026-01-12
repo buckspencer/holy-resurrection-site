@@ -1,6 +1,4 @@
 interface ImageWithTextBlockProps {
-	backgroundColor?: string;
-	backgroundPattern?: string;
 	title: string;
 	titleColor?: string;
 	titleStyle?: 'heading' | 'script';
@@ -21,8 +19,6 @@ interface ImageWithTextBlockProps {
 }
 
 export function ImageWithTextBlock({
-	backgroundColor = "#f5f5dc",
-	backgroundPattern,
 	title,
 	titleColor = "#6b7280",
 	titleStyle = 'script',
