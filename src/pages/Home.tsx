@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TextWithSideImagesBlock } from "../components/TextWithSideImagesBlock";
 import { ImageWithTextBlock } from "../components/ImageWithTextBlock";
 import { QuickLinksGrid } from "../components/QuickLinksGrid";
+import { IconWithTextGrid } from "../components/IconWithTextGrid";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -329,33 +330,29 @@ export function Home() {
 				]}
 			/>
 
-			{/* Principal Saint Visit Section */}
-			<section className="py-16 bg-green">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h2 className="font-heading text-3xl text-cream mb-8 uppercase tracking-wide">
-						Principal Saint Visit
-					</h2>
-
-					<div className="grid md:grid-cols-3 gap-8">
-						{[
-							{ name: "SAINT NICHOLAS", image: "/saint-icon-1.jpg" },
-							{ name: "SAINT MARY", image: "/saint-icon-2.jpg" },
-							{ name: "SAINT JOHN", image: "/saint-icon-3.jpg" },
-						].map((saint, index) => (
-							<div key={index} className="text-center">
-								<img
-									src={saint.image}
-									alt={saint.name}
-									className="w-32 h-40 mx-auto rounded mb-4 object-cover"
-								/>
-								<h3 className="font-body text-cream text-sm uppercase tracking-wide">
-									{saint.name}
-								</h3>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+			<IconWithTextGrid
+				title="What You'll Find Here"
+				items={[
+					{
+						icon: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+						alt: "Ancient Worship",
+						title: "Ancient Worship",
+						description: "Rooted in scripture, tradition, and the life of the early church"
+					},
+					{
+						icon: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+						alt: "Christ at the Center",
+						title: "Christ at the Center",
+						description: "Everything we do is oriented toward our Savior, the God-Man, Jesus Christ"
+					},
+					{
+						icon: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+						alt: "Living Community",
+						title: "Living Community",
+						description: "Shared meals, feasts, prayer, and spiritual formation"
+					}
+				]}
+			/>
 
 			{/* Footer Info Section */}
 			<section className="py-12 bg-blue">
