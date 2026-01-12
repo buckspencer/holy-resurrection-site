@@ -3,6 +3,7 @@ import { TextWithSideImagesBlock } from "../components/TextWithSideImagesBlock";
 import { ImageWithTextBlock } from "../components/ImageWithTextBlock";
 import { QuickLinksGrid } from "../components/QuickLinksGrid";
 import { IconWithTextGrid } from "../components/IconWithTextGrid";
+import { BannerImage } from "../components/BannerImage";
 
 export function Home() {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -352,6 +353,11 @@ export function Home() {
 						description: "Shared meals, feasts, prayer, and spiritual formation"
 					}
 				]}
+			/>
+
+			<BannerImage
+				src="/censor-banner.png"
+				alt="Censor Banner"
 			/>
 
 			{/* Footer Info Section */}
