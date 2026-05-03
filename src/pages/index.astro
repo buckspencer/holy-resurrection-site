@@ -10,8 +10,15 @@ import IconGrid from "../components/IconGrid.astro";
 import BannerImage from "../components/BannerImage.astro";
 import OrnateSteps from "../components/OrnateSteps.astro";
 
-const { entry, cacheHint } = await getEmDashEntry("pages", "home");
-if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
+let entry, cacheHint;
+try {
+	const result = await getEmDashEntry("pages", "home");
+	entry = result?.entry;
+	cacheHint = result?.cacheHint;
+	if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
+} catch (e) {
+	console.error("Failed to load home page:", e);
+}
 ---
 
 <Base isHome={true}>
