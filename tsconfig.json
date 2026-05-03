@@ -1,7 +1,5 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+	"extends": "astro/tsconfigs/strict",
+	"include": ["src/**/*", "emdash-env.d.ts"],
+	"exclude": ["node_modules", "dist"]
 }
