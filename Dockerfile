@@ -6,6 +6,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY . .
+RUN pnpm run bootstrap || true
 RUN pnpm build
 
 FROM base AS runtime
@@ -14,6 +15,7 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/public ./public
 COPY --from=build /app/data.db* ./
+COPY --from=build /app/seed ./seed
 COPY --from=build /app/package.json ./
 
 ENV HOST=0.0.0.0
