@@ -1,9 +1,8 @@
 #!/bin/sh
-# Only seed the database if it doesn't exist yet
 if [ ! -f /app/data.db ]; then
   echo "No database found. Running bootstrap..."
   npx emdash init
-  npx emdash seed
+  npx emdash seed /app/seed/seed.json
   echo "Bootstrap complete."
 else
   echo "Database exists, skipping bootstrap."
