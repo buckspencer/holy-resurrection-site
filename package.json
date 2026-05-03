@@ -1,14 +1,9 @@
 {
-	"name": "@phronema-labs/emdash-starter-church",
+	"name": "holy-resurrection-site",
 	"version": "0.1.0",
-	"description": "Orthodox church website starter for EmDash CMS",
+	"description": "Holy Resurrection Antiochian Orthodox Church website",
 	"type": "module",
 	"private": true,
-	"emdash": {
-		"label": "Church Site",
-		"description": "Complete church website with ministries, clergy, events, and parish life",
-		"seed": "seed/seed.json"
-	},
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -17,20 +12,21 @@
 		"seed": "emdash seed"
 	},
 	"dependencies": {
-		"@astrojs/node": "catalog:",
-		"@astrojs/react": "catalog:",
-		"@emdash-cms/plugin-audit-log": "workspace:*",
-		"@emdash-cms/plugin-forms": "workspace:*",
-		"@emdash-cms/plugin-seo": "workspace:*",
-		"astro": "catalog:",
-		"better-sqlite3": "catalog:",
-		"emdash": "workspace:*",
-		"react": "catalog:",
-		"react-dom": "catalog:"
+		"@astrojs/node": "^10.0.0",
+		"@astrojs/react": "^5.0.0",
+		"@emdash-cms/plugin-audit-log": "^0.1.2",
+		"@emdash-cms/plugin-forms": "^0.2.0",
+		"astro": "^6.0.1",
+		"better-sqlite3": "^12.8.0",
+		"emdash": "^0.9.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
-			"better-sqlite3"
+			"better-sqlite3",
+			"esbuild",
+			"sharp"
 		]
 	}
 }
