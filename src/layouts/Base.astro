@@ -74,6 +74,7 @@ const pageCtx = createPublicPageContext({
 					<div class="nav-links">
 						{menu?.items.map((item) => {
 							const isAbout = item.url === "/about" || item.label === "About Us";
+							const isEvents = item.url === "/events" || item.label === "Calendars & Events";
 							return isAbout ? (
 								<div class="nav-dropdown">
 									<a
@@ -87,6 +88,20 @@ const pageCtx = createPublicPageContext({
 										<a href="/about" class="dropdown-item">About Us</a>
 										<a href="/about/history" class="dropdown-item">Our History</a>
 										<a href="/about/leadership" class="dropdown-item">Our Leadership</a>
+									</div>
+								</div>
+							) : isEvents ? (
+								<div class="nav-dropdown">
+									<a
+										href={item.url}
+										class:list={["nav-link", { active: currentPath === "/events" || currentPath === "/daily-readings" }]}
+									>
+										{item.label}
+										<svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M1 1l4 4 4-4"/></svg>
+									</a>
+									<div class="nav-dropdown-menu">
+										<a href="/events" class="dropdown-item">Calendars & Events</a>
+										<a href="/daily-readings" class="dropdown-item">Daily Readings</a>
 									</div>
 								</div>
 							) : (
