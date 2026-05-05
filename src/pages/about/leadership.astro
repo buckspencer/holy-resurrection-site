@@ -1,0 +1,148 @@
+---
+import Base from "../../layouts/Base.astro";
+import BannerImage from "../../components/BannerImage.astro";
+---
+
+<Base title="Our Leadership">
+	{/* ===== Hero Image ===== */}
+	<section class="leadership-hero">
+		<img src="/images/leadership/our-leadership-hero-image.webp" alt="Church leadership" class="leadership-hero-img" />
+	</section>
+
+	{/* ===== Metropolitan Saba ===== */}
+	<section class="section">
+		<div class="container">
+			<div class="leader-grid">
+				<div class="leader-image">
+					<img src="/images/leadership/our-leadership-arched-image-01.webp" alt="His Eminence Metropolitan Saba" loading="lazy" />
+				</div>
+				<div class="leader-content">
+					<h2 class="leader-name">His Eminence Metropolitan Saba,</h2>
+					<h3 class="leader-title">Metropolitan of New York and All North America</h3>
+					<p class="leader-bio">His Eminence, the Most Reverend Saba Isper is the Archbishop of New York and Metropolitan of the Antiochian Orthodox Christian Archdiocese of North America, elected by His Beatitude Patriarch John X on Feb. 23, 2023, in Balamand, Lebanon. He is a tireless servant of Christ continually travelling, visiting all his churches, meeting Clergy and Parishioners who are blessed by his heartfelt guidance paying deep attention to the Youth of the Orthodox Churches who are the guarantors of our future.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<BannerImage src="/images/leadership/our-leadership-divider-image-01.webp" alt="Church interior" />
+
+	{/* ===== Bishop Anthony ===== */}
+	<section class="section section-cream">
+		<div class="container">
+			<div class="leader-grid leader-grid-reverse">
+				<div class="leader-content">
+					<h2 class="leader-name">His Grace Bishop Anthony,</h2>
+					<h3 class="leader-title">Diocese of Los Angeles & the West</h3>
+					<p class="leader-bio">Bishop Anthony (Michaels) was born and raised in the Orthodox Christian faith and thus his journey to becoming a bishop was rooted in his family background and early religious life. His academic pursuits culminated in a Master of Divinity degree from St. Vladimir's Orthodox Theological Seminary, where he was the Valedictorian, solidifying his theological foundation. A prolific lecturer and author, he is known for his work on the intersection of faith and secularism, including his book-in-progress, Between Utopia and Despair. On August 1, 2024, He was appointed to serve as the Bishop of the Diocese of Los Angeles and the West, overseeing 68 parishes and missions across the Western United States and Canada.</p>
+				</div>
+				<div class="leader-image">
+					<img src="/images/leadership/our-leadership-arched-image-02.webp" alt="His Grace Bishop Anthony" loading="lazy" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<BannerImage src="/images/leadership/our-leadership-divider-image-02.webp" alt="Church detail" />
+
+	{/* ===== Fr. Gabriel Bullock ===== */}
+	<section class="section">
+		<div class="container">
+			<div class="leader-grid">
+				<div class="leader-image">
+					<img src="/images/leadership/our-leadership-arched-image-03.webp" alt="Fr. Gabriel Bullock" loading="lazy" />
+				</div>
+				<div class="leader-content">
+					<h2 class="leader-name">The Very Reverend</h2>
+					<h3 class="leader-title">Fr. Gabriel Bullock</h3>
+					<p class="leader-bio">Fr. Gabriel was born in Colorado and raised in Utah. As a young adult, he moved to Chicago, where he met his wife, Cindy. He was received into the Orthodox Church in 1996 and married Cindy the following year.</p>
+					<p class="leader-bio">Fr. Gabriel completed his theological studies at St. Vladimir's Orthodox Theological Seminary, earning a Master of Divinity degree. He was ordained to the Holy Diaconate in 2001 and to the Holy Priesthood in 2002 by Metropolitan PHILIP of thrice-blessed memory.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="section-cta">
+		<a href="/about" class="btn btn-primary btn-lg">Go Back</a>
+	</div>
+
+	<BannerImage src="/images/leadership/our-leadership-divider-image-03.webp" alt="Church celebration" />
+</Base>
+
+<style>
+	.leadership-hero {
+		margin-top: -4rem;
+		overflow: hidden;
+		max-height: 500px;
+	}
+
+	.leadership-hero-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+
+	.leader-grid {
+		display: grid;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	@media (min-width: 768px) {
+		.leader-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.leader-grid-reverse {
+		direction: ltr;
+	}
+
+	@media (min-width: 768px) {
+		.leader-grid-reverse .leader-content { order: -1; }
+	}
+
+	.leader-image img {
+		width: 100%;
+		max-width: 24rem;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.leader-name {
+		font-family: var(--font-heading);
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		margin-bottom: 0.25rem;
+	}
+
+	.leader-title {
+		font-family: var(--font-heading);
+		font-size: clamp(1.2rem, 2vw, 1.6rem);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		margin-bottom: 1.5rem;
+	}
+
+	.leader-bio {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		line-height: 1.8;
+		color: var(--color-muted);
+		margin-bottom: 1rem;
+		text-align: justify;
+	}
+
+	.section-cream {
+		background: var(--brand-cream);
+	}
+
+	.section-cta {
+		text-align: center;
+		padding: 2rem 0 3rem;
+	}
+</style>

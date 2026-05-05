@@ -1,0 +1,147 @@
+---
+import Base from "../../layouts/Base.astro";
+import BannerImage from "../../components/BannerImage.astro";
+---
+
+<Base title="Our History">
+	{/* ===== Hero Image ===== */}
+	<section class="history-hero">
+		<img src="/images/history/history-hero-image.webp" alt="Church history" class="history-hero-img" />
+	</section>
+
+	{/* ===== Intro ===== */}
+	<section class="section">
+		<div class="container">
+			<h1 class="section-heading">Holy Resurrections History</h1>
+			<div class="history-text">
+				<p>The journey of Holy Resurrection Antiochian Orthodox Church has been a very long and arduous one, beginning with its inception as a mission on Pascha, April 13, 1969, with Father David Bass, Deacon Andrew Kish, a handful of local Tucson Orthodox parishioners, and a contingency from St. George Antiochian Orthodox Church in Phoenix. Fulfilling the need for an English-speaking Orthodox Church with approximately 75 Orthodox Christians in attendance, the inaugural service was held in the chapel of the Arizona Mortuary at 4401 E. First St.</p>
+			</div>
+
+			<div class="history-images">
+				<img src="/images/history/history-image-01.webp" alt="Early parish" loading="lazy" />
+				<img src="/images/history/history-image-02.webp" alt="Parish growth" loading="lazy" />
+			</div>
+
+			<div class="history-text">
+				<p>For the next few months, Deacon Andrew Kish commuted from Glendale, Arizona to help the newly formed mission. In the summer of 1969, the Kish family moved to Tucson and Deacon Andrew was ordained to the Holy Priesthood on July 13, 1969, and was appointed the first Pastor of HROC. As attendance grew over the next few months, services were moved from the chapel of the Arizona Mortuary to the Parish Hall of Grace Episcopal Church and the search for a more permanent home for the growing community began.</p>
+			</div>
+		</div>
+	</section>
+
+	<BannerImage src="/images/history/history-divider-image-01.webp" alt="Historical church photo" />
+
+	<section class="section">
+		<div class="container">
+			<div class="history-text">
+				<p>In April 1970, the mission purchased the former Miracle Mile Baptist Church located at 735 W. Vanover Road. Fr. Andrew Kish worked part-time in the parish while maintaining another job. In addition to his responsibilities as Pastor, he taught at both Glendale Community College and at Pima Community College. Father Andrew's wife, Dorothy, served as the first choir director until our current director, Mamoro Boosembra Hall, took over this role in 1978. Father Andrew was Pastor at Holy Resurrection until 1984, when Father Thomas Ruffin became the first full time Pastor at Holy Resurrection. In 1986, Lawrence Schmude was ordained as a Sub-Deacon, which was the beginning of his many years of service to our parish.</p>
+			</div>
+		</div>
+	</section>
+
+	{/* ===== Pull Quote ===== */}
+	<section class="section section-cream">
+		<div class="container">
+			<blockquote class="history-pullquote">
+				<p>"In February of 2011, on the Feast of the Presentation of Our Lord in the Temple, the first service was held at the new Church."</p>
+			</blockquote>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="history-text">
+				<p>In August of 1985, Father Michael Evans was assigned as pastor of HRAOC and served the parish until being reassigned in 1988, during which time we hosted our first Western Region Parish Life Conference in the summer of 1988. On January 1, 1989, Father David and Kh. Louise Barr were assigned to our parish and served for 10 years. During this time, our parish grew and flourished, and the land our current parish is located on was purchased and the beginning of the building project for a new church was born. HRAOC was served by several priests from 1988-2005, including Father Elias Issa, Father Justin McWaters, and Father John Treague. In the summer of 2005, Father Phillip and Kh. Theodora Hiton were assigned to Holy Resurrection. During Father Philip's time as pastor, we saw our church continue to grow in membership and eventually the dream of the new church temple was realized. In February of 2005, our church building on Vanover Rd. was sold to St. Michael Ukrainian Catholic Church and HRAOC held services at St. Katherine's Chapel, which is owned by our sister church, St. Demetrios Greek Orthodox Church.</p>
+
+				<p>In February of 2011, on the Feast of the Presentation of Our Lord in the Temple, the first service was held at the new church, located at 5901 E. 5th St. To meet the needs of the growing church, our faithful Sub-Deacon Lawrence Schmude was ordained to the Diaconate on January 26, 2014, by His Grace Bishop JOSEPH. Fr. Philip Stone retired in the summer of 2016, after serving HROC for 17 years, and on August 1, 2016, Father Gabriel and Kh. Cindy Bullock began their tenure at HRAOC.</p>
+
+				<p>Once envisioned from its inception as a Pan-Orthodox Church (seen as serving Orthodox Christians from many ethnic backgrounds), and over the past 50 years, HRAOC has grown from a mission to a thriving community! This growth would not have happened without the support and dedication of her many members. HRAOC continues to be an Orthodox beacon for Tucson and has parishioners from many ethnic Orthodox backgrounds -- Ukrainian, Greek, Serbian, Lebanese, Jordanian, Romanian, Syrian, as well as those who converted to Orthodoxy by choice. HRAOC will continue to grow and will still be here for many years to come, serving the Orthodox community! May God grant HRAOC many more years of faithful worship and to continue doing God's will!</p>
+			</div>
+
+			<div class="history-cta">
+				<a href="/about" class="btn btn-primary btn-lg">Go Back</a>
+			</div>
+		</div>
+	</section>
+
+	<BannerImage src="/images/history/history-bottom-image.webp" alt="Church celebration" />
+</Base>
+
+<style>
+	.history-hero {
+		margin-top: -4rem;
+		overflow: hidden;
+		max-height: 500px;
+	}
+
+	.history-hero-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+
+	.section-heading {
+		font-family: var(--font-heading);
+		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.history-text {
+		max-width: 48rem;
+		margin: 0 auto;
+	}
+
+	.history-text p {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		line-height: 1.8;
+		color: var(--color-muted);
+		margin-bottom: 1.5rem;
+		text-align: justify;
+	}
+
+	.history-images {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		margin: 2rem auto;
+		max-width: 48rem;
+	}
+
+	.history-images img {
+		width: 100%;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-md);
+	}
+
+	@media (max-width: 768px) {
+		.history-images { grid-template-columns: 1fr; }
+	}
+
+	.section-cream {
+		background: var(--brand-cream);
+	}
+
+	.history-pullquote {
+		max-width: 48rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.history-pullquote p {
+		font-family: var(--font-quote-stack);
+		font-size: clamp(1.8rem, 4vw, 2.8rem);
+		font-style: italic;
+		color: var(--brand-primary);
+		line-height: 1.4;
+	}
+
+	.history-cta {
+		text-align: center;
+		margin-top: 2rem;
+	}
+</style>
