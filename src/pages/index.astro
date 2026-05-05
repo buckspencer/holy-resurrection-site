@@ -63,16 +63,25 @@ try {
 	<ServiceTimesCard />
 	<div class="services-section-border"></div>
 
+	{/* ===== "Visiting a church can be intimidating" Banner ===== */}
+	<section class="intimidating-banner">
+		<div class="intimidating-overlay">
+			<p class="intimidating-text">Visiting a church can be intimidating...<br />especially an Orthodox one.</p>
+		</div>
+	</section>
+
 	{/* ===== "We are a church that walks with you" ===== */}
 	<ImageWithText
 		title="We are a church that walks with you."
 		titleStyle="script"
-		content="Being part of Ancient Orthodox Christianity is to be welcomed onto a more profound journey of deep, quiet, spiritual growth, by faithfully immersing oneself in all the mysteries of the Apostolic traditions."
+		content="Being part of Ancient Orthodox Christianity is to be welcomed onto a more profound journey of deep, quiet, spiritual growth, by faithfully immersing oneself in all the mysteries of the Apostolic traditions; the Holy Trinity, Sacraments, studying the Scriptures and lives of the Saints, attending services, daily prayer and fasting brings your entire being into direct experiential encounter with the Triune God, transforming one's whole heart and becoming one with the loving body of Christ and hearing the voice of the Lord."
+		quote={`"Leave everything to God, my child, and you will immediately see how peaceful you will be, how much joy you will feel immediately and how much comfort and peace you will find."`}
+		quoteAttribution="— St. Ephraim of Katounakia"
 		secondaryHeading="The Apostolic Faith"
-		secondaryContent="Following the true Faith of the Apostles, who directly received and spread the word of Christ, is a commitment to strive to be more Christ-like, guided by clergy and prayer, not trends."
+		secondaryContent="Following the true Faith of the Apostles, who directly received and spread the word of Christ, is a commitment to strive to be more Christ-like, to know a profoundly deep peace, expressing faith through acts of love, and service to mankind, allowing God's grace to manifest, bringing Heaven to Earth."
 		image={{ src: "/images/home/homepage-getting-to-know-us-candles-feature-panel.webp", alt: "Parish Life" }}
-		buttonText="What to Expect on Sunday"
-		buttonHref="/visitors"
+		buttonText="Learn More About Who We Are"
+		buttonHref="/about"
 	/>
 
 	{/* ===== Quick Links ===== */}
@@ -241,6 +250,36 @@ try {
 	.dome-banner-border {
 		height: 40px;
 		background: url('/border-section-divider.webp') repeat-x center / auto 100%;
+	}
+
+	/* Intimidating banner */
+	.intimidating-banner {
+		background: url('/images/home/homepage-getting-to-know-us-candles-feature-panel.webp') center / cover no-repeat;
+		position: relative;
+		min-height: 300px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.intimidating-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.65);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem;
+	}
+
+	.intimidating-text {
+		font-family: var(--font-heading);
+		font-size: clamp(1.5rem, 3vw, 2.2rem);
+		color: var(--brand-cream);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		text-align: center;
+		line-height: 1.5;
 	}
 
 </style>

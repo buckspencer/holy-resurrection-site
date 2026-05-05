@@ -12,140 +12,186 @@ const { entries: ministries } = await getEmDashCollection("ministries", { status
 ---
 
 <Base title="About Us">
+	{/* ===== Hero Image ===== */}
+	<section class="about-hero">
+		<img src="/images/about/about-us-hero-image.webp" alt="Iconostasis" class="about-hero-img" />
+	</section>
+
+	{/* ===== Our Vision ===== */}
 	<section class="section">
 		<div class="container">
-			<h1 class="page-title">{entry?.data.title || "About Us"}</h1>
-			{entry?.data.content && (
-				<div class="prose">
-					<PortableText value={entry.data.content} />
+			<div class="vision-grid">
+				<div class="vision-content">
+					<h2 class="section-heading-left">Our Vision</h2>
+					{entry?.data.content ? (
+						<div class="prose">
+							<PortableText value={entry.data.content} />
+						</div>
+					) : (
+						<p class="body-text">From our inception we have striven to serve as a Pan-Orthodox Church, for Orthodox Christians from many ethnic backgrounds: Ukrainian, Greek, Serbian, Lebanese, Russian, Jordanian, Romanian, Syrian, as well as those who converted to Orthodoxy by choice. Over the past 50 years, Holy Resurrection Antiochian Orthodox Church has grown from a small mission to a thriving church community! This growth would not have happened without the support and dedication of her many members. Holy Resurrection Orthodox Church continues to be an Orthodox beacon for Tucson. God willing, Holy Resurrection will continue to grow and be here for many years to come, serving and expanding the Orthodox community. May God grant Holy Resurrection Orthodox Church many more years of faithful worship and to continue doing God's will!</p>
+					)}
 				</div>
-			)}
+				<div class="vision-image">
+					<img src="/images/about/about-us-ous-vision-image.webp" alt="Our Vision" loading="lazy" />
+				</div>
+			</div>
 		</div>
 	</section>
 
+	{/* ===== Banner Image ===== */}
 	<BannerImage src="/banner-iconostasis.webp" alt="Iconostasis" />
 
-	{clergy.length > 0 && (
-		<section class="section section-cream">
-			<div class="container">
-				<h2 class="section-heading">Our Clergy</h2>
-				<div class="clergy-grid">
-					{clergy.map((member) => (
-						<div class="clergy-card">
-							{member.data.photo && (
-								<img src={(member.data.photo as any).src || (member.data.photo as any).url} alt={member.data.name} class="clergy-photo" />
-							)}
-							<h3 class="clergy-name">{member.data.name}</h3>
-							{member.data.title && <p class="clergy-title">{member.data.title}</p>}
-							{member.data.bio && <p class="clergy-bio">{member.data.bio}</p>}
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-	)}
+	{/* ===== Holy Resurrections History ===== */}
+	<section class="section">
+		<div class="container">
+			<h2 class="section-heading">Holy Resurrections History</h2>
+			<p class="body-text">The journey of Holy Resurrection Antiochian Orthodox Church has been a very long and arduous one, beginning with its inception as a mission on Pascha, April 13, 1969, with Father David Bass, Deacon Andrew Kish, a handful of local Tucson Orthodox parishioners, and a contingency from St. George Antiochian Orthodox Church in Phoenix. Fulfilling the need for an English-speaking Orthodox Church with approximately 75 Orthodox Christians in attendance, the inaugural service was held in the chapel of the Arizona Mortuary at 4401 E. First St.</p>
 
-	{ministries.length > 0 && (
-		<section class="section">
-			<div class="container">
-				<h2 class="section-heading">Our Ministries</h2>
-				<div class="ministries-grid">
-					{ministries.map((ministry) => (
-						<a href={`/ministries/${ministry.slug}`} class="ministry-card card-elevated">
-							<h3>{ministry.data.title}</h3>
-							{ministry.data.summary && <p>{ministry.data.summary}</p>}
-						</a>
-					))}
+			<div class="history-images">
+				<img src="/images/about/about-us-history-image-01.webp" alt="Historical photo" loading="lazy" />
+				<img src="/images/about/about-us-history-image-02.webp" alt="Historical photo" loading="lazy" />
+			</div>
+
+			<p class="body-text">For the next few months, Deacon Andrew Kish commuted from Glendale, Arizona to help the newly formed mission. In the summer of 1969, the Kish family moved to Tucson and Deacon Andrew was ordained to the Holy Priesthood on July 13, 1969, and was appointed the first Pastor of HROC. As attendance grew over the next few months, services were moved from the chapel of the Arizona Mortuary to the Parish Hall of Grace Episcopal Church and the search for a more permanent home for the growing community began.</p>
+
+			<div class="history-cta">
+				<a href="/about/history" class="btn btn-primary btn-lg">Read More</a>
+			</div>
+		</div>
+	</section>
+
+	{/* ===== Our Leadership ===== */}
+	<section class="section section-dark">
+		<div class="container">
+			<h2 class="section-heading section-heading-light">Our Leadership</h2>
+			<div class="leadership-content">
+				<p class="body-text-light">His Beatitude Patriarch John X, Patriarch of Antioch and all the East. His Eminence Metropolitan Saba, Metropolitan of New York and all North America. The Very Reverend Father Gabriel Bullock, Protos. The Very Reverend Father Philip Nixon, attached. Archpriest John Erickson, attached. Saint Vladimir's Chapel, OCA. Dr. Pierre Sakali, Parish Council Chairperson.</p>
+				<div class="leadership-cta">
+					<a href="/about/leadership" class="btn btn-green btn-lg">Meet our clergy</a>
 				</div>
 			</div>
-		</section>
-	)}
+		</div>
+	</section>
+
+	{/* ===== Banner Image ===== */}
+	<BannerImage src="/images/about/about-us-our-ministies-texture-bkgd.webp" alt="Decorative texture" />
+
+	{/* ===== Our Ministries ===== */}
+	<section class="section section-dark">
+		<div class="container">
+			<h2 class="section-heading section-heading-light">Our Ministries</h2>
+			<div class="ministries-content">
+				<p class="body-text-light">The Holy Resurrection Orthodox Church, deeply united in our core beliefs, lovingly carries on with our Lord's work by actively serving the needs of our Parish Members, their families, the community of Tucson and all humanity, helping wherever help is needed. Through these expanding endeavors we hope to bring more hearts to the "One holy Catholic and apostolic church" and the heavenly, peaceful love of the Holy Trinity.</p>
+				<div class="ministries-cta">
+					<a href="/ministries" class="btn btn-green btn-lg">Get Involved</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </Base>
 
 <style>
-	.page-title {
-		font-family: var(--font-heading);
-		font-size: clamp(2rem, 4vw, 3rem);
-		color: var(--brand-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-bottom: 2rem;
-		text-align: center;
+	.about-hero {
+		margin-top: -4rem;
+		overflow: hidden;
+		max-height: 500px;
 	}
 
-	.section-cream { background: var(--brand-cream); }
+	.about-hero-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
 
 	.section-heading {
 		font-family: var(--font-heading);
-		font-size: var(--font-size-3xl);
+		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
 		color: var(--brand-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
 		text-align: center;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 	}
 
-	.clergy-grid {
+	.section-heading-left {
+		font-family: var(--font-heading);
+		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		margin-bottom: 1.5rem;
+	}
+
+	.section-heading-light {
+		color: var(--brand-cream);
+	}
+
+	.vision-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 2rem;
+		gap: 3rem;
+		align-items: start;
 	}
 
-	.clergy-card { text-align: center; }
+	@media (min-width: 768px) {
+		.vision-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
 
-	.clergy-photo {
-		width: 12rem;
-		height: 12rem;
-		border-radius: 50%;
-		object-fit: cover;
-		margin: 0 auto 1.5rem;
+	.vision-image img {
+		width: 100%;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.body-text {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		line-height: 1.8;
+		color: var(--color-muted);
+		margin-bottom: 1.5rem;
+	}
+
+	.body-text-light {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		line-height: 1.8;
+		color: rgba(255, 255, 255, 0.85);
+		margin-bottom: 1.5rem;
+	}
+
+	.history-images {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		margin: 2rem 0;
+	}
+
+	.history-images img {
+		width: 100%;
+		border-radius: var(--radius-md);
 		box-shadow: var(--shadow-md);
 	}
 
-	.clergy-name {
-		font-family: var(--font-heading);
-		font-size: var(--font-size-xl);
-		color: var(--brand-primary);
+	@media (max-width: 768px) {
+		.history-images { grid-template-columns: 1fr; }
 	}
 
-	.clergy-title {
-		font-family: var(--font-body-stack);
-		color: var(--brand-accent);
-		font-style: italic;
-		margin-top: 0.25rem;
+	.history-cta,
+	.leadership-cta,
+	.ministries-cta {
+		text-align: center;
+		margin-top: 2rem;
 	}
 
-	.clergy-bio {
-		font-family: var(--font-body-stack);
-		color: var(--color-muted);
-		line-height: 1.7;
-		margin-top: 1rem;
-		max-width: 28rem;
-		margin-inline: auto;
+	.section-dark {
+		background: var(--brand-primary);
 	}
 
-	.ministries-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-		gap: 1.5rem;
-	}
-
-	.ministry-card {
-		padding: 2rem;
-		text-decoration: none;
-	}
-
-	.ministry-card h3 {
-		font-family: var(--font-heading);
-		font-size: var(--font-size-lg);
-		color: var(--brand-primary);
-		margin-bottom: 0.5rem;
-	}
-
-	.ministry-card p {
-		font-family: var(--font-body-stack);
-		font-size: var(--font-size-sm);
-		color: var(--color-muted);
-		line-height: 1.6;
+	.leadership-content,
+	.ministries-content {
+		max-width: 48rem;
+		margin: 0 auto;
 	}
 </style>
