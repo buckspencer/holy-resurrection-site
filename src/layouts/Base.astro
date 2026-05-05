@@ -72,15 +72,33 @@ const pageCtx = createPublicPageContext({
 						</svg>
 					</button>
 					<div class="nav-links">
-						{menu?.items.map((item) => (
-							<a
-								href={item.url}
-								target={item.target}
-								class:list={["nav-link", { active: currentPath === item.url }]}
-							>
-								{item.label}
-							</a>
-						))}
+						{menu?.items.map((item) => {
+							const isAbout = item.url === "/about" || item.label === "About Us";
+							return isAbout ? (
+								<div class="nav-dropdown">
+									<a
+										href={item.url}
+										class:list={["nav-link", { active: currentPath?.startsWith("/about") }]}
+									>
+										{item.label}
+										<svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M1 1l4 4 4-4"/></svg>
+									</a>
+									<div class="nav-dropdown-menu">
+										<a href="/about" class="dropdown-item">About Us</a>
+										<a href="/about/history" class="dropdown-item">Our History</a>
+										<a href="/about/leadership" class="dropdown-item">Our Leadership</a>
+									</div>
+								</div>
+							) : (
+								<a
+									href={item.url}
+									target={item.target}
+									class:list={["nav-link", { active: currentPath === item.url }]}
+								>
+									{item.label}
+								</a>
+							);
+						})}
 					</div>
 				</nav>
 			</div>
@@ -427,6 +445,53 @@ const pageCtx = createPublicPageContext({
 				border-radius: 3px;
 			}
 
+			/* Dropdown */
+			.nav-dropdown {
+				position: relative;
+			}
+
+			.dropdown-arrow {
+				margin-left: 4px;
+				transition: transform 0.2s ease;
+			}
+
+			.nav-dropdown:hover .dropdown-arrow {
+				transform: rotate(180deg);
+			}
+
+			.nav-dropdown-menu {
+				display: none;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				background: var(--brand-primary);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 4px;
+				min-width: 180px;
+				padding: 0.5rem 0;
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+				z-index: 100;
+			}
+
+			.nav-dropdown:hover .nav-dropdown-menu {
+				display: block;
+			}
+
+			.dropdown-item {
+				display: block;
+				padding: 0.5rem 1rem;
+				font-family: var(--font-body-stack);
+				font-size: var(--font-size-sm);
+				color: white;
+				text-decoration: none;
+				transition: background 0.2s ease;
+			}
+
+			.dropdown-item:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: var(--brand-accent);
+			}
+
 			/* Ornamental banner */
 			.nav-banner {
 				height: 40px;
@@ -665,6 +730,22 @@ const pageCtx = createPublicPageContext({
 				.nav-link {
 					padding: 0.75rem;
 					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				}
+
+				.nav-dropdown-menu {
+					position: static;
+					border: none;
+					box-shadow: none;
+					padding: 0 0 0 1rem;
+					min-width: auto;
+				}
+
+				.nav-dropdown:hover .nav-dropdown-menu {
+					display: block;
+				}
+
+				.nav-links.nav-open .nav-dropdown-menu {
+					display: block;
 				}
 
 				.footer-grid {
