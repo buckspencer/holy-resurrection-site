@@ -202,6 +202,30 @@ const pageCtx = createPublicPageContext({
 				const expanded = toggle.getAttribute("aria-expanded") === "true";
 				toggle.setAttribute("aria-expanded", String(!expanded));
 				links?.classList.toggle("nav-open");
+				// Close all dropdowns when closing the menu
+				if (expanded) {
+					document.querySelectorAll(".nav-dropdown-menu").forEach((m) => m.classList.remove("dropdown-open"));
+					document.querySelectorAll(".dropdown-arrow").forEach((a) => (a as HTMLElement).style.transform = "");
+				}
+			});
+
+			// Mobile dropdown toggles
+			document.querySelectorAll<HTMLElement>(".nav-dropdown > .nav-link").forEach((link) => {
+				link.addEventListener("click", (e) => {
+					if (window.innerWidth > 768) return; // only on mobile
+					e.preventDefault();
+					const dropdown = link.closest(".nav-dropdown");
+					const menu = dropdown?.querySelector(".nav-dropdown-menu");
+					const arrow = link.querySelector(".dropdown-arrow") as HTMLElement;
+					const isOpen = menu?.classList.contains("dropdown-open");
+					// Close other dropdowns
+					document.querySelectorAll(".nav-dropdown-menu").forEach((m) => m.classList.remove("dropdown-open"));
+					document.querySelectorAll(".dropdown-arrow").forEach((a) => (a as HTMLElement).style.transform = "");
+					if (!isOpen) {
+						menu?.classList.add("dropdown-open");
+						if (arrow) arrow.style.transform = "rotate(180deg)";
+					}
+				});
 			});
 
 			// Scroll-triggered reveal animations
@@ -746,24 +770,42 @@ const pageCtx = createPublicPageContext({
 				.nav-links.nav-open { display: flex; }
 
 				.nav-link {
+					display: block;
+					width: 100%;
 					padding: 0.75rem;
 					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				}
+
+				.nav-link.active {
+					background: none;
+					color: var(--brand-accent);
+				}
+
+				.nav-dropdown {
+					flex-direction: column;
+					align-items: stretch;
+					width: 100%;
+				}
+
+				.nav-dropdown .nav-link {
+					width: 100%;
 				}
 
 				.nav-dropdown-menu {
 					position: static;
 					border: none;
 					box-shadow: none;
-					padding: 0 0 0 1rem;
+					padding: 0 0 0 1.5rem;
 					min-width: auto;
+					background: transparent;
 				}
 
 				.nav-dropdown:hover .nav-dropdown-menu {
-					display: block;
+					display: none;
 				}
 
-				.nav-links.nav-open .nav-dropdown-menu {
-					display: block;
+				.nav-dropdown-menu.dropdown-open {
+					display: block !important;
 				}
 
 				.footer-grid {
