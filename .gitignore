@@ -11,3 +11,5 @@ uploads/
 *.png
 !public/**/*.png
 !src/**/*.png
+*.webp
+!public/**/*.webp

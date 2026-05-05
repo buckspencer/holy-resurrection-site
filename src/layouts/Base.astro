@@ -45,7 +45,8 @@ const pageCtx = createPublicPageContext({
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{fullTitle}</title>
-		<link rel="icon" href={siteFavicon || "/favicon.svg"} type="image/svg+xml" />
+		<link rel="icon" href={siteFavicon || "/favicon.ico"} />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<EmDashHead page={pageCtx} />
 		<Font cssVariable="--font-body" preload />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,7 +61,7 @@ const pageCtx = createPublicPageContext({
 			<div class="header-bg">
 				<nav class="nav">
 					<a href="/" class="site-logo">
-						<img src="/navigation-hroc-horizontal-logo-cream.png" alt={siteTitle} class="site-logo-img" />
+						<img src="/navigation-hroc-horizontal-logo-cream.webp" alt={siteTitle} class="site-logo-img" />
 					</a>
 					<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
 						<svg class="nav-icon-open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,7 +86,7 @@ const pageCtx = createPublicPageContext({
 			</div>
 			<!-- Ornamental banner border -->
 			<div class="nav-banner">
-				<img src="/border-section-divider.png" alt="" class="nav-banner-img" />
+				<img src="/border-section-divider.webp" alt="" class="nav-banner-img" />
 			</div>
 		</header>
 
@@ -96,7 +97,7 @@ const pageCtx = createPublicPageContext({
 		<!-- Footer -->
 		<footer class="site-footer">
 			<div class="footer-banner">
-				<img src="/footer-banner.png" alt="" class="footer-banner-img" />
+				<img src="/footer-banner.webp" alt="" class="footer-banner-img" />
 			</div>
 			<div class="container footer-content">
 				<!-- Navigation -->
@@ -131,11 +132,11 @@ const pageCtx = createPublicPageContext({
 
 				<!-- Photo strip -->
 				<div class="footer-photos">
-					<img src="/images/footer/footer-image-01.png" alt="Parish Life" loading="lazy" />
-					<img src="/images/footer/footer-image-02.png" alt="Parish Life" loading="lazy" />
-					<img src="/images/footer/footer-image-03.png" alt="Parish Life" loading="lazy" />
-					<img src="/images/footer/footer-image-04.png" alt="Parish Life" loading="lazy" />
-					<img src="/images/footer/footer-image-05.png" alt="Parish Life" loading="lazy" />
+					<img src="/images/footer/footer-image-01.webp" alt="Parish Life" loading="lazy" />
+					<img src="/images/footer/footer-image-02.webp" alt="Parish Life" loading="lazy" />
+					<img src="/images/footer/footer-image-03.webp" alt="Parish Life" loading="lazy" />
+					<img src="/images/footer/footer-image-04.webp" alt="Parish Life" loading="lazy" />
+					<img src="/images/footer/footer-image-05.webp" alt="Parish Life" loading="lazy" />
 				</div>
 
 				<!-- Bottom bar -->
@@ -429,7 +430,7 @@ const pageCtx = createPublicPageContext({
 			/* Ornamental banner */
 			.nav-banner {
 				height: 40px;
-				background: url('/border-section-divider.png') repeat-x center / auto 100%;
+				background: url('/border-section-divider.webp') repeat-x center / auto 100%;
 				overflow: hidden;
 			}
 
