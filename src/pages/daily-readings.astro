@@ -1,0 +1,162 @@
+---
+import Base from "../layouts/Base.astro";
+import DailyReadings from "../components/DailyReadings";
+---
+
+<Base title="Daily Readings">
+	<section class="section">
+		<div class="container">
+			<h1 class="page-title">Daily Readings</h1>
+			<DailyReadings client:load />
+		</div>
+	</section>
+</Base>
+
+<style>
+	.page-title {
+		font-family: var(--font-heading);
+		font-size: clamp(2rem, 4vw, 3rem);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	:global(.daily-readings-container) {
+		max-width: 48rem;
+		margin: 0 auto;
+	}
+
+	:global(.daily-readings-date) {
+		text-align: center;
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-lg);
+		color: var(--brand-primary);
+		margin-bottom: 1.5rem;
+	}
+
+	:global(.daily-readings-feast) {
+		text-align: center;
+		margin-bottom: 2rem;
+		padding: 1.5rem;
+		background: var(--brand-cream);
+		border-radius: var(--radius-md);
+	}
+
+	:global(.feast-title) {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-xl);
+		color: var(--brand-primary);
+		margin-bottom: 0.5rem;
+	}
+
+	:global(.feast-desc) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+		margin-bottom: 0.5rem;
+	}
+
+	:global(.fast-info) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		color: var(--brand-rust);
+		font-style: italic;
+	}
+
+	:global(.daily-readings-tabs) {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	:global(.tab-btn) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		padding: 0.75rem 1.5rem;
+		border: 2px solid var(--brand-primary);
+		background: transparent;
+		color: var(--brand-primary);
+		border-radius: 9999px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	:global(.tab-btn:hover) {
+		background: var(--brand-cream);
+	}
+
+	:global(.tab-active) {
+		background: var(--brand-primary) !important;
+		color: white !important;
+	}
+
+	:global(.readings-selector) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
+		margin-bottom: 2rem;
+	}
+
+	:global(.reading-btn) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		padding: 0.5rem 1rem;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		background: white;
+		color: var(--color-text);
+		border-radius: var(--radius-md);
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	:global(.reading-btn:hover) {
+		border-color: var(--brand-primary);
+		color: var(--brand-primary);
+	}
+
+	:global(.reading-active) {
+		background: var(--brand-primary) !important;
+		color: white !important;
+		border-color: var(--brand-primary) !important;
+	}
+
+	:global(.reading-content) {
+		padding: 2rem;
+		background: white;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-sm);
+	}
+
+	:global(.reading-title) {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-xl);
+		color: var(--brand-primary);
+		margin-bottom: 1rem;
+		text-align: center;
+	}
+
+	:global(.reading-text) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		line-height: 1.8;
+		color: var(--color-text);
+	}
+
+	:global(.daily-readings-attribution) {
+		text-align: center;
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-top: 2rem;
+	}
+
+	:global(.daily-readings-attribution a) {
+		color: var(--brand-primary);
+		text-decoration: underline;
+	}
+</style>
