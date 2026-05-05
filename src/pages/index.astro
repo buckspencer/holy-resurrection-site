@@ -64,11 +64,13 @@ try {
 	<div class="services-section-border"></div>
 
 	{/* ===== "Visiting a church can be intimidating" Banner ===== */}
+	<div class="intimidating-border-top"></div>
 	<section class="intimidating-banner">
 		<div class="intimidating-overlay">
 			<p class="intimidating-text">Visiting a church can be intimidating...<br />especially an Orthodox one.</p>
 		</div>
 	</section>
+	<div class="intimidating-border-bottom"></div>
 
 	{/* ===== "We are a church that walks with you" ===== */}
 	<ImageWithText
@@ -270,6 +272,12 @@ try {
 		align-items: center;
 		justify-content: center;
 		padding: 3rem;
+	}
+
+	.intimidating-border-top,
+	.intimidating-border-bottom {
+		height: 40px;
+		background: url('/border-section-divider.webp') repeat-x center / auto 100%;
 	}
 
 	.intimidating-text {

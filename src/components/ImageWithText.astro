@@ -37,6 +37,12 @@ const titleClass = titleStyle === "script" ? "title-script" : "title-heading";
 		<h2 class:list={["iwt-title", titleClass]}>{title}</h2>
 
 		<div class="iwt-grid">
+			{image && (
+				<div class="iwt-image">
+					<img src={image.src} alt={image.alt} loading="lazy" />
+				</div>
+			)}
+
 			<div class="iwt-content">
 				<p class="iwt-body">{content}</p>
 
@@ -58,12 +64,6 @@ const titleClass = titleStyle === "script" ? "title-script" : "title-heading";
 					<a href={buttonHref || "#"} class="btn btn-green btn-lg iwt-btn">{buttonText}</a>
 				)}
 			</div>
-
-			{image && (
-				<div class="iwt-image">
-					<img src={image.src} alt={image.alt} loading="lazy" />
-				</div>
-			)}
 		</div>
 	</div>
 </section>
@@ -103,11 +103,16 @@ const titleClass = titleStyle === "script" ? "title-script" : "title-heading";
 	.iwt-grid {
 		display: grid;
 		gap: 3rem;
-		align-items: center;
+		align-items: start;
 	}
 
 	@media (min-width: 1024px) {
-		.iwt-grid { grid-template-columns: 1fr 1fr; }
+		.iwt-grid { grid-template-columns: 2fr 3fr; }
+	}
+
+	.iwt-image {
+		position: sticky;
+		top: 5rem;
 	}
 
 	.iwt-body {
@@ -155,8 +160,8 @@ const titleClass = titleStyle === "script" ? "title-script" : "title-heading";
 
 	.iwt-image img {
 		width: 100%;
-		max-width: 28rem;
-		margin: 0 auto;
+		height: 100%;
+		object-fit: cover;
 		border-radius: var(--radius-md);
 		box-shadow: var(--shadow-lg);
 	}
