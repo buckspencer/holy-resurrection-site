@@ -243,7 +243,13 @@ try {
 		height: 50vh;
 		min-height: 300px;
 		background: url('/landing-dome-banner.webp') center / cover no-repeat;
-		background-attachment: fixed;
+		overflow: hidden;
+	}
+
+	@media (min-width: 1024px) {
+		.dome-banner {
+			background-attachment: fixed;
+		}
 	}
 
 	.dome-banner-img {
@@ -255,16 +261,9 @@ try {
 		background: url('/border-section-divider.webp') repeat-x center / auto 100%;
 	}
 
-	@media (max-width: 768px) {
-		.dome-banner {
-			background-attachment: scroll;
-		}
-	}
-
 	/* Intimidating banner */
 	.intimidating-banner {
 		background: url('/images/home/homepage-getting-to-know-us-candles-feature-panel.webp') center / cover no-repeat;
-		background-attachment: fixed;
 		position: relative;
 		min-height: 350px;
 		display: flex;
@@ -288,7 +287,6 @@ try {
 
 	@media (max-width: 768px) {
 		.intimidating-banner {
-			background-attachment: scroll;
 		}
 	}
 
