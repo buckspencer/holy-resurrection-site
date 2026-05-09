@@ -1,10 +1,5 @@
 ---
-import { getEmDashEntry } from "emdash";
-import { PortableText } from "emdash/ui";
 import Base from "../layouts/Base.astro";
-
-const { entry, cacheHint } = await getEmDashEntry("pages", "donate");
-if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 ---
 
 <Base title="Support Our Parish">
@@ -12,9 +7,13 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 	<section class="donate-hero">
 		<div class="donate-hero-parallax" style="background-image: url('/images/about/about-us-hero-image.webp');">
 			<div class="donate-hero-overlay">
-				<div class="container">
-					<h1 class="donate-hero-title">Support Our Parish</h1>
-					<p class="donate-hero-sub">Your generosity sustains the life of our community</p>
+				<div class="container donate-hero-inner">
+					<img src="/images/elements/vine-greyscale.svg" alt="" class="donate-hero-vine donate-hero-vine-left" />
+					<div class="donate-hero-text">
+						<h1 class="donate-hero-title">Support Our Parish</h1>
+						<p class="donate-hero-sub">Your generosity sustains the life of our community</p>
+					</div>
+					<img src="/images/elements/vine-greyscale.svg" alt="" class="donate-hero-vine donate-hero-vine-right" />
 				</div>
 			</div>
 		</div>
@@ -22,13 +21,20 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 
 	<section class="section">
 		<div class="container donate-content">
-			{entry?.data.content && (
-				<div class="prose donate-intro">
-					<PortableText value={entry.data.content} />
-				</div>
-			)}
+			<!-- Intro -->
+			<div class="prose donate-intro">
+				<p>Without the generous support and efforts of each individual, our church will be severely challenged to provide its duties to congregation members and our local community. Your support can make a difference in many ways. Donations can simply be in the form of providing your service and time to help make our church grow; and/or a monetary donation of any amount for which a tax-deductible receipt will be issued.</p>
+				<p class="donate-appreciate"><strong>We greatly appreciate your support!</strong></p>
+			</div>
+
+			<!-- Monetary Donations -->
+			<div class="donate-section-heading">
+				<h2>Monetary Donations</h2>
+			</div>
+			<p class="donate-body">The church can accept online donations using Tithely. You can make a one-time donation or set up a recurring monthly donation from your bank account or credit card. If you wish to donate to a specific group within the church, such as Antiochian Women or the choir, please let us know in the comments.</p>
 
 			<!-- Donation Options -->
+			<!-- Online Giving (top, centered) -->
 			<div class="donate-grid reveal-stagger">
 				<div class="donate-card card-elevated">
 					<div class="donate-icon">
@@ -38,9 +44,13 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 					</div>
 					<h3>Online Giving</h3>
 					<p>Make a one-time or recurring donation through our secure online giving platform.</p>
-					<a href="https://tithe.ly" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg donate-btn">Give Online via Tithe.ly</a>
+					<img src="/images/tithe-ly-qr.png" alt="Scan to donate via Tithe.ly" class="donate-qr" />
+					<a href="https://give.tithe.ly/?formId=e7073501-65b1-414c-96dc-dc1817f3d0ea" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg donate-btn">Give Online via Tithe.ly</a>
 				</div>
+			</div>
 
+			<!-- By Mail + In Person (bottom row) -->
+			<div class="donate-grid-bottom reveal-stagger">
 				<div class="donate-card card-elevated">
 					<div class="donate-icon">
 						<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -50,7 +60,7 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 					</div>
 					<h3>By Mail</h3>
 					<p>Send your donation by check, made payable to Holy Resurrection Antiochian Orthodox Church.</p>
-					<p class="donate-address">5901 E. 5th Street<br />Tucson, AZ 85711</p>
+					<a href="https://www.google.com/maps/search/?api=1&query=Holy+Resurrection+Orthodox+Church+5910+E.+5th+Street+Tucson,+AZ+85711" target="_blank" rel="noopener noreferrer" class="donate-address">5910 E. 5th Street<br />Tucson, AZ 85711</a>
 				</div>
 
 				<div class="donate-card card-elevated">
@@ -64,6 +74,25 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 					<p>Donations can be made in person during any service. Offering trays are passed during the Divine Liturgy.</p>
 				</div>
 			</div>
+
+			<!-- eScrip -->
+			<div class="donate-section-heading">
+				<h2>eScrip</h2>
+			</div>
+			<p class="donate-body">Holy Resurrection Orthodox Church is a registered organization on eScrip! Every time you shop with a merchant participating in the program, they will donate a percentage of your purchase to our parish. For more information and to sign up, visit <a href="http://www.escrip.com" target="_blank" rel="noopener noreferrer">www.escrip.com</a>.</p>
+
+			<!-- Volunteer -->
+			<div class="donate-section-heading">
+				<h2>Volunteer</h2>
+			</div>
+			<p class="donate-body">It is the little tasks and chores that make the biggest difference! It is these tasks that go largely unnoticed because we tend to take these things for granted when we attend church. Without the efforts of volunteers, our mission would not be possible.</p>
+			<ul class="donate-list">
+				<li>Get involved in the Church Parish council or other Church committees.</li>
+				<li>Encourage your sons to be altar servers.</li>
+				<li>Involve your children in the Church Youth Programs and Church School.</li>
+				<li>Volunteer your time to help organize our social functions.</li>
+				<li>Sponsor Coffee Hour after service.</li>
+			</ul>
 		</div>
 	</section>
 </Base>
@@ -89,6 +118,35 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.donate-hero-inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	.donate-hero-text {
+		flex: 1;
+		text-align: center;
+	}
+
+	.donate-hero-vine {
+		height: 160px;
+		width: auto;
+		object-fit: contain;
+		opacity: 0.4;
+		flex-shrink: 0;
+		filter: brightness(10);
+	}
+
+	.donate-hero-vine-right {
+		transform: scaleX(-1);
+	}
+
+	@media (max-width: 768px) {
+		.donate-hero-vine { display: none; }
 	}
 
 	.donate-hero-title {
@@ -122,17 +180,33 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 
 	.donate-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: 1fr;
 		gap: 2rem;
+		max-width: 24rem;
+		margin: 0 auto 0;
+	}
+
+	.donate-grid-bottom {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+		max-width: 50rem;
+		margin: 2rem auto 0;
+	}
+
+	.donate-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	@media (max-width: 768px) {
-		.donate-grid { grid-template-columns: 1fr; }
+		.donate-grid-bottom { grid-template-columns: 1fr; max-width: 24rem; }
 		.donate-hero-parallax { background-attachment: scroll; }
 	}
 
 	.donate-card {
-		padding: 2.5rem 2rem;
+		padding: 1.5rem 1.5rem;
 		text-align: center;
 	}
 
@@ -165,7 +239,62 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 		margin-top: 1rem;
 	}
 
+	.donate-qr {
+		display: block;
+		margin: 0.75rem auto;
+		max-width: 140px;
+		width: 100%;
+	}
+
 	.donate-btn {
-		margin-top: 1.5rem;
+		margin-top: 1rem;
+	}
+
+	.donate-appreciate {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-lg);
+		color: var(--brand-primary);
+	}
+
+	.donate-section-heading {
+		margin-top: 3rem;
+		margin-bottom: 1rem;
+		border-bottom: 2px solid var(--brand-accent);
+		padding-bottom: 0.5rem;
+	}
+
+	.donate-section-heading h2 {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-xl);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.donate-body {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+		line-height: 1.8;
+		margin-bottom: 1.5rem;
+	}
+
+	.donate-body a {
+		color: var(--brand-primary);
+		text-decoration: underline;
+	}
+
+	.donate-list {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+		line-height: 1.8;
+		list-style: disc;
+		padding-left: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.donate-list li {
+		margin-bottom: 0.5rem;
 	}
 </style>

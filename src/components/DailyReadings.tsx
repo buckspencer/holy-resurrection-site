@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 
+interface Verse {
+	verse: number;
+	text: string;
+}
+
 interface Reading {
 	title: string;
 	fullText: string;
+	verses: Verse[] | null;
 }
 
 interface LiturgicalDay {
@@ -109,12 +115,23 @@ export default function DailyReadings() {
 					</div>
 					<div className="reading-content">
 						<h3 className="reading-title">{day.readings[selectedReading]?.title}</h3>
-						<div
-							className="reading-text"
-							dangerouslySetInnerHTML={{
-								__html: day.readings[selectedReading]?.fullText || "",
-							}}
-						/>
+						{day.readings[selectedReading]?.verses ? (
+							<div className="reading-text reading-verses">
+								{day.readings[selectedReading].verses!.map((v) => (
+									<span key={v.verse}>
+										<sup className="verse-num">{v.verse}</sup>
+										{v.text}{" "}
+									</span>
+								))}
+							</div>
+						) : (
+							<div
+								className="reading-text"
+								dangerouslySetInnerHTML={{
+									__html: day.readings[selectedReading]?.fullText || "",
+								}}
+							/>
+						)}
 					</div>
 				</div>
 			)}

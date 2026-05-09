@@ -12,11 +12,15 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 <Base title="Welcome, Visitors">
 	<!-- Hero -->
 	<section class="visitor-hero">
-		<div class="visitor-hero-parallax" style="background-image: url('/images/about/about-us-chandelier-feature.webp');">
+		<div class="visitor-hero-parallax" style="background-image: url('/images/about/about-us-chandelier-feature-image.webp');">
 			<div class="visitor-hero-overlay">
-				<div class="container">
-					<h1 class="visitor-hero-title">Welcome, Visitors</h1>
-					<p class="visitor-hero-sub">We are glad you are here</p>
+				<div class="container visitor-hero-inner">
+					<img src="/images/elements/chi-rho-birds.svg" alt="" class="visitor-hero-graphic visitor-hero-graphic-left" />
+					<div class="visitor-hero-text">
+						<h1 class="visitor-hero-title">Welcome, Visitors</h1>
+						<p class="visitor-hero-sub">We are glad you are here</p>
+					</div>
+					<img src="/images/elements/chi-rho-birds.svg" alt="" class="visitor-hero-graphic visitor-hero-graphic-right" />
 				</div>
 			</div>
 		</div>
@@ -116,6 +120,35 @@ if (cacheHint) Astro.response.headers.set("Cache-Control", cacheHint);
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.visitor-hero-inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	.visitor-hero-text {
+		flex: 1;
+		text-align: center;
+	}
+
+	.visitor-hero-graphic {
+		height: 180px;
+		width: auto;
+		object-fit: contain;
+		opacity: 0.3;
+		flex-shrink: 0;
+		filter: brightness(10);
+	}
+
+	.visitor-hero-graphic-right {
+		transform: scaleX(-1);
+	}
+
+	@media (max-width: 768px) {
+		.visitor-hero-graphic { display: none; }
 	}
 
 	.visitor-hero-title {

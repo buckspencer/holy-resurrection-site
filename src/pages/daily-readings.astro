@@ -4,27 +4,43 @@ import DailyReadings from "../components/DailyReadings";
 ---
 
 <Base title="Daily Readings">
-	<section class="section">
+	<section class="section daily-readings-section">
 		<div class="container">
 			<h1 class="page-title">Daily Readings</h1>
+			<img src="/images/home/hompage-plan-your-visit-decorative-divider.png" alt="" class="title-divider" />
 			<DailyReadings client:load />
 		</div>
 	</section>
 </Base>
 
 <style>
+	.daily-readings-section {
+		background-image: url('/branch-background.png');
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: 80% auto;
+	}
+
 	.page-title {
 		font-family: var(--font-heading);
 		font-size: clamp(2rem, 4vw, 3rem);
 		color: var(--brand-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		text-align: center;
 	}
 
+	.title-divider {
+		display: block;
+		margin: 0 auto 2rem;
+		max-width: 28rem;
+		width: 100%;
+		opacity: 0.85;
+	}
+
 	:global(.daily-readings-container) {
-		max-width: 48rem;
+		max-width: 56rem;
 		margin: 0 auto;
 	}
 
@@ -39,9 +55,10 @@ import DailyReadings from "../components/DailyReadings";
 	:global(.daily-readings-feast) {
 		text-align: center;
 		margin-bottom: 2rem;
-		padding: 1.5rem;
+		padding: 1.5rem 2rem;
 		background: var(--brand-cream);
 		border-radius: var(--radius-md);
+		border-top: 3px solid var(--brand-primary);
 	}
 
 	:global(.feast-title) {
@@ -126,7 +143,7 @@ import DailyReadings from "../components/DailyReadings";
 	}
 
 	:global(.reading-content) {
-		padding: 2rem;
+		padding: 2.5rem 3rem;
 		background: white;
 		border-radius: var(--radius-md);
 		box-shadow: var(--shadow-sm);
@@ -147,6 +164,15 @@ import DailyReadings from "../components/DailyReadings";
 		color: var(--color-text);
 	}
 
+	:global(.verse-num) {
+		font-size: 0.7em;
+		font-weight: 700;
+		color: var(--brand-primary);
+		margin-right: 0.15em;
+		vertical-align: super;
+		line-height: 0;
+	}
+
 	:global(.daily-readings-attribution) {
 		text-align: center;
 		font-family: var(--font-body-stack);
@@ -158,5 +184,26 @@ import DailyReadings from "../components/DailyReadings";
 	:global(.daily-readings-attribution a) {
 		color: var(--brand-primary);
 		text-decoration: underline;
+	}
+
+	/* Mobile: reading content takes full width */
+	@media (max-width: 768px) {
+		.daily-readings-section {
+			padding-inline: 0.25rem;
+		}
+
+		:global(.daily-readings-container) {
+			max-width: 100%;
+			padding: 0;
+		}
+
+		:global(.reading-content) {
+			padding: 1rem 0.75rem;
+			border-radius: var(--radius-sm, 0.5rem);
+		}
+
+		.title-divider {
+			max-width: 18rem;
+		}
 	}
 </style>

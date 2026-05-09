@@ -61,31 +61,30 @@ const { entries: ministries } = await getEmDashCollection("ministries", { status
 	</section>
 
 	{/* ===== Our Leadership ===== */}
-	<section class="section section-dark">
-		<div class="container">
-			<h2 class="section-heading section-heading-light">Our Leadership</h2>
-			<div class="leadership-content">
-				<p class="body-text-light">His Beatitude Patriarch John X, Patriarch of Antioch and all the East. His Eminence Metropolitan Saba, Metropolitan of New York and all North America. The Very Reverend Father Gabriel Bullock, Protos. The Very Reverend Father Philip Nixon, attached. Archpriest John Erickson, attached. Saint Vladimir's Chapel, OCA. Dr. Pierre Sakali, Parish Council Chairperson.</p>
-				<div class="leadership-cta">
+	<section class="section-dark section-flush">
+		<div class="leadership-grid">
+				<div class="leadership-image">
+					<img src="/images/about/about-us-our-leadership-image.webp" alt="Church clergy" loading="lazy" />
+				</div>
+				<div class="leadership-text">
+					<h2 class="section-heading-left section-heading-light">Our Leadership</h2>
+					<p class="body-text-light">His Beatitude Patriarch John X, Patriarch of Antioch and all the East. His Eminence Metropolitan Saba, Metropolitan of New York and all North America. The Very Reverend Father Gabriel Bullock, Protos. The Very Reverend Father Philip Nixon, attached. Archpriest John Erickson, attached. Saint Vladimir's Chapel, OCA. Dr. Pierre Sakali, Parish Council Chairperson.</p>
 					<a href="/about/leadership" class="btn btn-green btn-lg">Meet our clergy</a>
 				</div>
-			</div>
 		</div>
 	</section>
 
-	{/* ===== Banner Image ===== */}
-	<BannerImage src="/images/about/about-us-our-ministies-texture-bkgd.webp" alt="Decorative texture" />
-
 	{/* ===== Our Ministries ===== */}
-	<section class="section section-dark">
-		<div class="container">
-			<h2 class="section-heading section-heading-light">Our Ministries</h2>
-			<div class="ministries-content">
-				<p class="body-text-light">The Holy Resurrection Orthodox Church, deeply united in our core beliefs, lovingly carries on with our Lord's work by actively serving the needs of our Parish Members, their families, the community of Tucson and all humanity, helping wherever help is needed. Through these expanding endeavors we hope to bring more hearts to the "One holy Catholic and apostolic church" and the heavenly, peaceful love of the Holy Trinity.</p>
-				<div class="ministries-cta">
+	<section class="section-ministries section-flush">
+		<div class="ministries-grid">
+				<div class="ministries-text">
+					<h2 class="section-heading-left">Our Ministries</h2>
+					<p class="body-text">The Holy Resurrection Orthodox Church, deeply united in our core beliefs, lovingly carries on with our Lord's work by actively serving the needs of our Parish Members, their families, the community of Tucson and all humanity, helping wherever help is needed. Through these expanding endeavors we hope to bring more hearts to the "One holy Catholic and apostolic church" and the heavenly, peaceful love of the Holy Trinity.</p>
 					<a href="/ministries" class="btn btn-green btn-lg">Get Involved</a>
 				</div>
-			</div>
+				<div class="ministries-image">
+					<img src="/images/about/about-us-our-ministies-image.webp" alt="Church ministries" loading="lazy" />
+				</div>
 		</div>
 	</section>
 </Base>
@@ -105,21 +104,21 @@ const { entries: ministries } = await getEmDashCollection("ministries", { status
 	}
 
 	.section-heading {
-		font-family: var(--font-heading);
+		font-family: var(--font-display);
 		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
 		color: var(--brand-primary);
 		text-transform: uppercase;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.06em;
 		text-align: center;
 		margin-bottom: 2rem;
 	}
 
 	.section-heading-left {
-		font-family: var(--font-heading);
+		font-family: var(--font-display);
 		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
 		color: var(--brand-primary);
 		text-transform: uppercase;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.06em;
 		margin-bottom: 1.5rem;
 	}
 
@@ -178,20 +177,84 @@ const { entries: ministries } = await getEmDashCollection("ministries", { status
 		.history-images { grid-template-columns: 1fr; }
 	}
 
-	.history-cta,
-	.leadership-cta,
-	.ministries-cta {
+	.history-cta {
 		text-align: center;
 		margin-top: 2rem;
 	}
 
 	.section-dark {
-		background: var(--brand-primary);
+		background: #935545;
 	}
 
-	.leadership-content,
-	.ministries-content {
-		max-width: 48rem;
-		margin: 0 auto;
+	.section-flush {
+		padding: 0;
+	}
+
+	.section-ministries {
+		background: var(--brand-cream);
+	}
+
+	/* Leadership */
+	.leadership-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: stretch;
+	}
+
+	.leadership-image {
+		overflow: hidden;
+	}
+
+	.leadership-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.leadership-text {
+		padding: 4rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	@media (max-width: 768px) {
+		.leadership-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	/* Ministries */
+
+	.ministries-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: stretch;
+	}
+
+	.ministries-text {
+		padding: 4rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background: url('/images/about/about-us-our-ministies-texture-bkgd.webp') center / cover no-repeat;
+	}
+
+	.ministries-image {
+		overflow: hidden;
+	}
+
+	.ministries-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 768px) {
+		.ministries-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

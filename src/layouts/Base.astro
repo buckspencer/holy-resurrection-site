@@ -149,11 +149,12 @@ const pageCtx = createPublicPageContext({
 							Stay connected to the life of our parish beyond Sunday. Receive gentle updates on feast days,
 							gatherings, retreats, and opportunities to grow together in faith and fellowship.
 						</p>
-						<form class="footer-form" method="POST" action="/contact">
+						<form class="footer-form" id="footerSubscribe">
 							<input type="text" name="name" placeholder="Full Name" class="footer-input" />
-							<input type="email" name="email" placeholder="Email" class="footer-input" />
-							<button type="submit" class="footer-submit">Subscribe</button>
+							<input type="email" name="email" placeholder="Email" required class="footer-input" />
+							<button type="submit" class="footer-submit" id="footerSubmitBtn">Subscribe</button>
 						</form>
+						<div id="footerStatus" class="footer-status" style="display:none;"></div>
 					</div>
 
 					<!-- Quote -->
@@ -568,7 +569,7 @@ const pageCtx = createPublicPageContext({
 				margin: 0 auto;
 			}
 			.main-page {
-				max-width: var(--site-max-width);
+				max-width: 100%;
 				margin: 0 auto;
 				padding-top: 4rem;
 			}
@@ -684,6 +685,24 @@ const pageCtx = createPublicPageContext({
 
 			.footer-submit:hover {
 				background: color-mix(in srgb, var(--brand-accent) 90%, #fff);
+			}
+
+			.footer-status {
+				margin-top: 0.75rem;
+				padding: 0.75rem 1rem;
+				border-radius: 8px;
+				font-family: var(--font-body-stack);
+				font-size: var(--font-size-sm);
+			}
+
+			.footer-status.success {
+				background: rgba(114, 129, 88, 0.3);
+				color: #c8e6c9;
+			}
+
+			.footer-status.error {
+				background: rgba(200, 50, 50, 0.3);
+				color: #ffcdd2;
 			}
 
 			.footer-quote {
@@ -849,5 +868,44 @@ const pageCtx = createPublicPageContext({
 				}
 			}
 		</style>
+	<script>
+		const subForm = document.getElementById("footerSubscribe") as HTMLFormElement | null;
+		const subStatus = document.getElementById("footerStatus");
+		const subBtn = document.getElementById("footerSubmitBtn") as HTMLButtonElement | null;
+
+		subForm?.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			if (!subBtn || !subStatus) return;
+			subBtn.disabled = true;
+			subBtn.textContent = "Subscribing...";
+			subStatus.style.display = "none";
+
+			try {
+				const res = await fetch("/api/subscribe", {
+					method: "POST",
+					body: new FormData(subForm),
+				});
+				const data = await res.json();
+
+				if (res.ok) {
+					subStatus.className = "footer-status success";
+					subStatus.textContent = "Thank you for subscribing!";
+					subStatus.style.display = "block";
+					subForm.reset();
+				} else {
+					subStatus.className = "footer-status error";
+					subStatus.textContent = data.error || "Something went wrong.";
+					subStatus.style.display = "block";
+				}
+			} catch {
+				subStatus.className = "footer-status error";
+				subStatus.textContent = "Network error. Please try again.";
+				subStatus.style.display = "block";
+			}
+
+			subBtn.disabled = false;
+			subBtn.textContent = "Subscribe";
+		});
+	</script>
 	</body>
 </html>

@@ -28,7 +28,12 @@ import BannerImage from "../../components/BannerImage.astro";
 		</div>
 	</section>
 
-	<BannerImage src="/images/history/history-divider-image-01.webp" alt="Historical church photo" />
+	<section class="banner-with-text">
+		<img src="/images/history/history-divider-image-01.webp" alt="Historical church photo" class="banner-full-img" />
+		<div class="banner-overlay-text">
+			<p class="acts-ref">Acts 11:26</p>
+		</div>
+	</section>
 
 	<section class="section">
 		<div class="container">
@@ -42,7 +47,8 @@ import BannerImage from "../../components/BannerImage.astro";
 	<section class="section section-cream">
 		<div class="container">
 			<blockquote class="history-pullquote">
-				<p>"In February of 2011, on the Feast of the Presentation of Our Lord in the Temple, the first service was held at the new Church."</p>
+				<span class="pullquote-mark">&ldquo;&ldquo;</span>
+				<p>In February of 2011, on the Feast of the Presentation of Our Lord in the Temple, the first service was held at the new Church.</p>
 			</blockquote>
 		</div>
 	</section>
@@ -81,11 +87,11 @@ import BannerImage from "../../components/BannerImage.astro";
 	}
 
 	.section-heading {
-		font-family: var(--font-heading);
+		font-family: var(--font-display);
 		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
 		color: var(--brand-primary);
 		text-transform: uppercase;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.06em;
 		text-align: center;
 		margin-bottom: 2rem;
 	}
@@ -126,18 +132,59 @@ import BannerImage from "../../components/BannerImage.astro";
 		background: var(--brand-cream);
 	}
 
+	/* Banner with text overlay */
+	.banner-with-text {
+		position: relative;
+		width: 100%;
+	}
+
+	.banner-full-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+
+	.banner-overlay-text {
+		position: absolute;
+		right: 3rem;
+		bottom: 1.5rem;
+	}
+
+	.acts-ref {
+		font-family: var(--font-quote-stack);
+		font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+		font-style: italic;
+		color: white;
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+	}
+
+	/* Pull Quote */
 	.history-pullquote {
 		max-width: 48rem;
 		margin: 0 auto;
-		text-align: center;
+		text-align: left;
+		position: relative;
+		padding-left: 4rem;
+		padding-top: 1rem;
+	}
+
+	.pullquote-mark {
+		font-family: var(--font-quote-stack);
+		font-size: 10rem;
+		color: var(--brand-rust);
+		line-height: 0;
+		position: absolute;
+		left: -1rem;
+		top: 5rem;
 	}
 
 	.history-pullquote p {
 		font-family: var(--font-quote-stack);
-		font-size: clamp(1.8rem, 4vw, 2.8rem);
+		font-size: clamp(2rem, 5vw, 3.2rem);
 		font-style: italic;
 		color: var(--brand-primary);
-		line-height: 1.4;
+		line-height: 1.35;
 	}
 
 	.history-cta {
