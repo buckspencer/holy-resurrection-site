@@ -212,7 +212,7 @@ const pageCtx = createPublicPageContext({
 			// Mobile dropdown toggles
 			document.querySelectorAll<HTMLElement>(".nav-dropdown > .nav-link").forEach((link) => {
 				link.addEventListener("click", (e) => {
-					if (window.innerWidth > 768) return; // only on mobile
+					if (window.innerWidth > 1150) return; // only on mobile
 					e.preventDefault();
 					const dropdown = link.closest(".nav-dropdown");
 					const menu = dropdown?.querySelector(".nav-dropdown-menu");
@@ -249,6 +249,23 @@ const pageCtx = createPublicPageContext({
 		<style is:global>
 			@layer base;
 
+			@font-face {
+				font-family: "Rumble Brave";
+				src: url("/fonts/RumbleBrave.otf") format("opentype");
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "Amoresa";
+				src: url("/fonts/Amoresa.woff2") format("woff2"),
+					 url("/fonts/Amoresa.ttf") format("truetype");
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+
 			@layer base {
 				*, *::before, *::after {
 					box-sizing: border-box;
@@ -262,10 +279,10 @@ const pageCtx = createPublicPageContext({
 					--color-muted: #64748b;
 					--color-border: #e2e8f0;
 
-					--font-display: "Cinzel", Georgia, serif;
+					--font-display: "Rumble Brave", "Cinzel", Georgia, serif;
 					--font-heading: "Cinzel", Georgia, serif;
 					--font-body-stack: "Quando", Georgia, serif;
-					--font-quote-stack: "Great Vibes", cursive;
+					--font-quote-stack: "Amoresa", "Great Vibes", cursive;
 
 					--font-size-xs: 0.75rem;
 					--font-size-sm: 0.875rem;
@@ -564,12 +581,12 @@ const pageCtx = createPublicPageContext({
 
 			.footer-banner {
 				width: 100%;
+				height: 40px;
+				background: url('/footer-banner.webp') repeat-x center / auto 100%;
 			}
 
 			.footer-banner-img {
-				width: 100%;
-				height: auto;
-				object-fit: cover;
+				display: none;
 			}
 
 			.footer-content {
@@ -603,11 +620,12 @@ const pageCtx = createPublicPageContext({
 			}
 
 			.footer-heading {
-				font-family: var(--font-heading);
+				font-family: var(--font-display);
 				font-size: var(--font-size-3xl);
 				color: var(--brand-accent);
 				text-transform: uppercase;
-				letter-spacing: 0.05em;
+				letter-spacing: 0.08em;
+				font-style: italic;
 				margin-bottom: 1.5rem;
 			}
 
@@ -739,7 +757,7 @@ const pageCtx = createPublicPageContext({
 			}
 
 			/* ===== Responsive ===== */
-			@media (max-width: 768px) {
+			@media (max-width: 1150px) {
 				.footer-photos {
 					grid-template-columns: repeat(2, 1fr);
 				}

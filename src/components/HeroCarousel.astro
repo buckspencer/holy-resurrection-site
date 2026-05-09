@@ -60,7 +60,6 @@ const displayImages = images.length >= 6 ? images : Array(6).fill(images[0] || "
 <style>
 	.hero-carousel {
 		padding: 2rem 0 2rem;
-		max-width: var(--site-max-width);
 		margin: 0 auto;
 		overflow: hidden;
 	}
@@ -70,7 +69,7 @@ const displayImages = images.length >= 6 ? images : Array(6).fill(images[0] || "
 		display: none;
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: 1151px) {
 		.hero-desktop { display: block; }
 		.hero-mobile { display: none; }
 	}
@@ -86,12 +85,12 @@ const displayImages = images.length >= 6 ? images : Array(6).fill(images[0] || "
 		padding: 0 1rem;
 	}
 
-	/* Arch-framed side images — PNGs have gold frames baked in */
+	/* Arch-framed side images — uniform size */
 	.hero-frame {
-		width: 10rem;
+		width: 5.5rem;
 		flex-shrink: 0;
 		transition: transform 0.5s ease;
-		margin: 0 0.2rem;
+		margin: 0 0.1rem;
 		position: relative;
 		z-index: 2;
 	}
@@ -113,7 +112,7 @@ const displayImages = images.length >= 6 ? images : Array(6).fill(images[0] || "
 
 	/* Center icon — overlaps on top of adjacent side panels */
 	.hero-center {
-		width: 24rem;
+		width: 14rem;
 		position: relative;
 		transition: transform 0.5s ease;
 		flex-shrink: 0;
@@ -175,23 +174,33 @@ const displayImages = images.length >= 6 ? images : Array(6).fill(images[0] || "
 		display: block;
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: 1151px) {
 		.hero-mobile { display: none; }
 	}
 
-	/* Larger screens — scale up, maintain overlap */
-	@media (min-width: 1024px) {
-		.hero-frame { width: 11rem; margin: 0 0.3rem; }
-		.hero-center { width: 28rem; margin: 0 -2rem; }
+	/* Scale up at each breakpoint */
+	@media (min-width: 900px) {
+		.hero-frame { width: 7rem; margin: 0 0.15rem; }
+		.hero-center { width: 17rem; margin: 0 -1.2rem; }
 	}
 
-	@media (min-width: 1280px) {
-		.hero-frame { width: 13rem; margin: 0 0.4rem; }
-		.hero-center { width: 32rem; margin: 0 -2.5rem; }
+	@media (min-width: 1024px) {
+		.hero-frame { width: 8rem; margin: 0 0.2rem; }
+		.hero-center { width: 19rem; margin: 0 -1.5rem; }
+	}
+
+	@media (min-width: 1200px) {
+		.hero-frame { width: 9.5rem; margin: 0 0.2rem; }
+		.hero-center { width: 22rem; margin: 0 -1.5rem; }
 	}
 
 	@media (min-width: 1440px) {
-		.hero-frame { width: 14rem; margin: 0 0.5rem; }
-		.hero-center { width: 35rem; margin: 0 -3rem; }
+		.hero-frame { width: 11rem; margin: 0 0.3rem; }
+		.hero-center { width: 26rem; margin: 0 -1.5rem; }
+	}
+
+	@media (min-width: 1600px) {
+		.hero-frame { width: 12rem; margin: 0 0.35rem; }
+		.hero-center { width: 28rem; margin: 0 -1.5rem; }
 	}
 </style>

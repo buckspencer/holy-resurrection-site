@@ -1,192 +1,442 @@
 ---
-import { getEmDashCollection } from "emdash";
 import Base from "../layouts/Base.astro";
+import ChurchCalendar from "../components/ChurchCalendar.tsx";
 
-const { entries: events } = await getEmDashCollection("events", { status: "published" });
+const apiKey = import.meta.env.PUBLIC_GOOGLE_CALENDAR_API_KEY || "";
 ---
 
 <Base title="Calendars & Events">
 	<section class="section">
 		<div class="container">
-			<h1 class="page-title">Calendars & Events</h1>
-
-			<!-- Daily Readings link -->
-			<div class="daily-readings-link">
-				<a href="/daily-readings" class="btn btn-primary btn-lg">Today's Daily Readings</a>
+			<div class="top-bar">
+				<div class="title-row">
+					<img src="/images/chi-rho-birds.svg" alt="" class="title-ornament title-ornament-left" />
+					<h1 class="page-title">Calendars & Events</h1>
+					<img src="/images/chi-rho-birds.svg" alt="" class="title-ornament title-ornament-right" />
+				</div>
+				<p class="service-summary">
+					<strong>Sat</strong> Vespers 5PM &nbsp;&middot;&nbsp;
+					<strong>Sun</strong> Orthros 9AM, Liturgy 10AM &nbsp;&middot;&nbsp;
+					<a href="/daily-readings" class="readings-link">Daily Readings &rarr;</a>
+				</p>
 			</div>
 
-			<!-- Regular Services -->
-			<div class="services-section reveal">
-				<h2 class="section-heading">Weekly Services</h2>
-				<div class="services-grid">
-					<div class="service-card card-elevated">
-						<h3>Saturday</h3>
-						<div class="service-detail">
-							<span class="service-name">Vespers</span>
-							<span class="service-time">5:00 PM</span>
-						</div>
-					</div>
-					<div class="service-card card-elevated">
-						<h3>Sunday</h3>
-						<div class="service-detail">
-							<span class="service-name">Orthros (Matins)</span>
-							<span class="service-time">9:00 AM</span>
-						</div>
-						<div class="service-detail">
-							<span class="service-name">Divine Liturgy</span>
-							<span class="service-time">10:00 AM</span>
-						</div>
-					</div>
-				</div>
+			<!-- Google Calendar -->
+			<div class="calendar-section">
+				<ChurchCalendar apiKey={apiKey} client:only="react" />
 			</div>
-
-			<!-- Events listing -->
-			{events.length > 0 && (
-				<div class="events-section reveal">
-					<h2 class="section-heading">Upcoming Events</h2>
-					<div class="events-list reveal-stagger">
-						{events.map((event) => (
-							<div class="event-card card-elevated">
-								<div class="event-date-badge">
-									{event.data.start_date && <span class="event-date">{event.data.start_date}</span>}
-								</div>
-								<div class="event-info">
-									<h3>{event.data.title}</h3>
-									{event.data.description && <p>{event.data.description}</p>}
-									{event.data.location && <span class="event-location">{event.data.location}</span>}
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			)}
 		</div>
 	</section>
 </Base>
 
 <style>
-	.page-title {
-		font-family: var(--font-heading);
-		font-size: clamp(2rem, 4vw, 3rem);
-		color: var(--brand-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-bottom: 3rem;
+	.section {
+		padding-top: 1rem;
+	}
+
+	.top-bar {
+		margin-bottom: 1.5rem;
 		text-align: center;
 	}
 
-	.section-heading {
-		font-family: var(--font-heading);
-		font-size: var(--font-size-2xl);
-		color: var(--brand-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-		text-align: center;
-		margin-bottom: 2rem;
-	}
-
-	.services-section {
-		margin-bottom: 4rem;
-	}
-
-	.services-grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 2rem;
-		max-width: 40rem;
-		margin: 0 auto;
-	}
-
-	@media (max-width: 600px) {
-		.services-grid { grid-template-columns: 1fr; }
-	}
-
-	.service-card {
-		padding: 2rem;
-		text-align: center;
-	}
-
-	.service-card h3 {
-		font-family: var(--font-heading);
-		font-size: var(--font-size-lg);
-		color: var(--brand-primary);
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-		margin-bottom: 1.25rem;
-		padding-bottom: 0.75rem;
-		border-bottom: 2px solid var(--brand-accent);
-	}
-
-	.service-detail {
-		display: flex;
-		justify-content: space-between;
-		padding: 0.5rem 0;
-	}
-
-	.service-name {
-		font-family: var(--font-body-stack);
-		font-size: var(--font-size-sm);
-		color: var(--color-text);
-	}
-
-	.service-time {
-		font-family: var(--font-body-stack);
-		font-size: var(--font-size-sm);
-		color: var(--brand-accent);
-		font-weight: 600;
-	}
-
-	.events-list {
-		max-width: 40rem;
-		margin: 0 auto;
-	}
-
-	.event-card {
-		display: flex;
-		gap: 1.5rem;
-		padding: 1.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.event-date-badge {
-		flex-shrink: 0;
+	.title-row {
 		display: flex;
 		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
 	}
 
-	.event-date {
-		font-family: var(--font-body-stack);
-		font-size: var(--font-size-sm);
-		color: var(--brand-accent);
-		font-weight: 600;
-		white-space: nowrap;
+	.title-ornament {
+		width: 4.5rem;
+		height: auto;
+		opacity: 0.2;
+		flex-shrink: 0;
 	}
 
-	.event-info h3 {
-		font-family: var(--font-heading);
-		font-size: var(--font-size-base);
-		color: var(--brand-primary);
-		margin-bottom: 0.25rem;
+	.title-ornament-right {
+		transform: scaleX(-1);
 	}
 
-	.event-info p {
+	.page-title {
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+		color: var(--brand-rust);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin-bottom: 0;
+	}
+
+	.service-summary {
 		font-family: var(--font-body-stack);
 		font-size: var(--font-size-sm);
 		color: var(--color-muted);
 		line-height: 1.6;
 	}
 
-	.event-location {
-		font-family: var(--font-body-stack);
-		font-size: var(--font-size-xs);
-		color: var(--color-muted);
-		font-style: italic;
-		margin-top: 0.25rem;
-		display: block;
+	.service-summary strong {
+		color: var(--brand-primary);
+		font-weight: 600;
 	}
 
-	.daily-readings-link {
-		text-align: center;
-		margin-bottom: 3rem;
+	.readings-link {
+		color: var(--brand-rust);
+		font-weight: 600;
+		text-decoration: underline;
+	}
+
+	@media (max-width: 768px) {
+		.section {
+			padding-inline: 0.5rem;
+		}
+
+		.page-title {
+			font-size: 1.5rem;
+		}
+
+		.service-summary {
+			font-size: var(--font-size-xs);
+		}
+	}
+
+	.calendar-section {
+		margin-bottom: 4rem;
+	}
+
+	/* ── FullCalendar Brand Overrides ── */
+	:global(.church-calendar) {
+		margin-top: 1rem;
+	}
+
+	/* Subscribe */
+	:global(.calendar-wrapper) {
+		position: relative;
+	}
+
+	:global(.calendar-subscribe) {
+		text-align: right;
+		margin-top: 1rem;
+		position: relative;
+	}
+
+	:global(.subscribe-btn) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		padding: 0.5rem 1.25rem;
+		background: var(--brand-green);
+		color: white;
+		border: none;
+		border-radius: 9999px;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	:global(.subscribe-btn:hover) {
+		opacity: 0.9;
+	}
+
+	:global(.subscribe-dropdown) {
+		position: absolute;
+		bottom: 100%;
+		right: 0;
+		margin-bottom: 0.5rem;
+		background: white;
+		border-radius: 12px;
+		padding: 1.25rem;
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+		z-index: 100;
+		min-width: 20rem;
+		text-align: left;
+	}
+
+	:global(.subscribe-heading) {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-xs);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		margin-bottom: 0.75rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid #e2e8f0;
+	}
+
+	:global(.subscribe-item) {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.4rem 0;
+	}
+
+	:global(.subscribe-dot) {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	:global(.subscribe-name) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		flex: 1;
+	}
+
+	:global(.subscribe-link) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-xs);
+		color: var(--brand-primary);
+		text-decoration: underline;
+		padding: 0.15rem 0.4rem;
+		border-radius: 4px;
+		transition: background-color 0.2s ease;
+	}
+
+	:global(.subscribe-link:hover) {
+		background-color: var(--brand-cream);
+	}
+
+	:global(.calendar-legend) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
+		margin-bottom: 0.75rem;
+		max-width: 34rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	:global(.legend-item) {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.4rem 0.75rem;
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 9999px;
+		cursor: pointer;
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		transition: opacity 0.2s ease;
+	}
+
+	:global(.legend-item.legend-hidden) {
+		opacity: 0.5;
+	}
+
+	:global(.legend-dot) {
+		width: 0.75rem;
+		height: 0.75rem;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	:global(.legend-label) {
+		color: var(--color-text);
+	}
+
+	:global(.fc) {
+		font-family: var(--font-body-stack);
+	}
+
+	:global(.fc .fc-toolbar-title) {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-2xl) !important;
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	:global(.fc .fc-col-header-cell-cushion) {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-sm);
+		color: var(--brand-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		text-decoration: none;
+	}
+
+	:global(.fc .fc-daygrid-day-number) {
+		font-family: var(--font-body-stack);
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	:global(.fc .fc-day-today) {
+		background-color: rgba(230, 189, 124, 0.12) !important;
+	}
+
+	:global(.fc .fc-button) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		border-radius: 6px;
+		padding: 0.4rem 0.75rem;
+		border: none;
+		transition: background-color 0.2s ease;
+	}
+
+	:global(.fc .fc-button-primary) {
+		background-color: var(--brand-primary);
+	}
+
+	:global(.fc .fc-button-primary:not(:disabled):hover) {
+		background-color: var(--brand-primary-dark);
+	}
+
+	:global(.fc .fc-button-primary:not(:disabled).fc-button-active),
+	:global(.fc .fc-button-primary:not(:disabled):active) {
+		background-color: var(--brand-accent);
+		color: var(--brand-primary);
+	}
+
+	:global(.fc .fc-button:focus) {
+		box-shadow: 0 0 0 2px var(--brand-accent);
+	}
+
+	:global(.fc-event) {
+		border-radius: 4px;
+		border: none !important;
+		cursor: pointer;
+		font-size: var(--font-size-sm);
+	}
+
+	:global(.fc .fc-list-event:hover td) {
+		background-color: rgba(230, 189, 124, 0.12);
+	}
+
+	:global(.fc .fc-list-day-cushion) {
+		background-color: var(--brand-cream);
+		font-family: var(--font-heading);
+		color: var(--brand-primary);
+	}
+
+	:global(.fc .fc-daygrid-more-link) {
+		color: var(--brand-rust);
+		font-weight: 600;
+	}
+
+	/* Event Detail Modal */
+	:global(.event-modal-overlay) {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1000;
+		padding: 1rem;
+	}
+
+	:global(.event-modal) {
+		background: white;
+		border-radius: 12px;
+		padding: 2rem;
+		max-width: 28rem;
+		width: 100%;
+		position: relative;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+	}
+
+	:global(.event-modal-close) {
+		position: absolute;
+		top: 0.75rem;
+		right: 1rem;
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		color: var(--color-muted);
+		cursor: pointer;
+		line-height: 1;
+	}
+
+	:global(.event-modal-badge) {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+		border-radius: 9999px;
+		color: white;
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-xs);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: 1rem;
+	}
+
+	:global(.event-modal-title) {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-xl);
+		color: var(--brand-primary);
+		margin-bottom: 0.5rem;
+	}
+
+	:global(.event-modal-time) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		color: var(--brand-rust);
+		margin-bottom: 0.5rem;
+	}
+
+	:global(.event-modal-location) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+
+	:global(.event-modal-desc) {
+		font-family: var(--font-body-stack);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		line-height: 1.6;
+	}
+
+	@media (max-width: 768px) {
+		:global(.fc .fc-toolbar) {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		:global(.fc .fc-toolbar-title) {
+			font-size: var(--font-size-lg) !important;
+		}
+
+		:global(.fc .fc-list-table) {
+			font-size: var(--font-size-xs);
+		}
+
+		:global(.fc .fc-list-event td) {
+			padding: 4px 8px;
+		}
+
+		:global(.fc .fc-list-day-cushion) {
+			padding: 4px 8px;
+			font-size: var(--font-size-xs);
+		}
+
+		:global(.calendar-legend) {
+			max-width: 100%;
+		}
+
+		/* Compact month grid on mobile */
+		:global(.fc .fc-daygrid-event) {
+			font-size: 0.6rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		:global(.fc .fc-daygrid-day-events) {
+			min-height: 0;
+		}
+
+		:global(.fc .fc-col-header-cell-cushion) {
+			font-size: 0.6rem;
+		}
+
+		:global(.fc .fc-daygrid-day-number) {
+			font-size: 0.7rem;
+			padding: 2px 4px;
+		}
 	}
 </style>

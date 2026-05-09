@@ -3,9 +3,41 @@
  * Services & Upcoming Events card matching mockup spec.
  * Two-column layout: Services (left) with icon/address, Events (right) with time pills.
  */
-import { getEmDashCollection } from "emdash";
+const apiKey = import.meta.env.PUBLIC_GOOGLE_CALENDAR_API_KEY;
+let gcalEvents: any[] = [];
 
-const { entries: events } = await getEmDashCollection("events", { status: "published" });
+if (apiKey) {
+	try {
+		const now = new Date().toISOString();
+		const calIds = [
+			"fphroc@gmail.com",
+			"ngc5qpqbmjcfcgnu69ign2vt58@group.calendar.google.com",
+			"kac7561aviq3totv40g23pr234@group.calendar.google.com",
+			"pvj2v0pn4f95pc7skfjp4v51uo@group.calendar.google.com",
+			"emu7o5mqkat1oko8j56margj0g@group.calendar.google.com",
+		];
+		const allEvents: any[] = [];
+		await Promise.all(calIds.map(async (id) => {
+			try {
+				const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?key=${apiKey}&timeMin=${now}&maxResults=4&singleEvents=true&orderBy=startTime`;
+				const res = await fetch(url);
+				if (!res.ok) return;
+				const data = await res.json();
+				for (const item of data.items || []) {
+					const start = item.start?.dateTime || item.start?.date || "";
+					const d = new Date(start);
+					const dateStr = d.toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
+					const timeStr = item.start?.dateTime
+						? d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })
+						: "All Day";
+					allEvents.push({ title: item.summary || "", date: dateStr, time: timeStr, start, link: item.htmlLink || "" });
+				}
+			} catch {}
+		}));
+		allEvents.sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+		gcalEvents = allEvents.slice(0, 4);
+	} catch {}
+}
 ---
 
 <section class="services-card">
@@ -27,11 +59,10 @@ const { entries: events } = await getEmDashCollection("events", { status: "publi
 
 			<a href="/events" class="calendar-btn">View Full Calendar</a>
 
-			<div class="services-icon">
-				<img src="/images/home/hroc-church-illustration.webp" alt="Holy Resurrection Antiochian Orthodox Church" />
-			</div>
-
-			<div class="services-address">
+			<div class="services-location">
+				<div class="services-icon">
+					<img src="/images/home/hroc-church-illustration.webp" alt="Holy Resurrection Antiochian Orthodox Church" />
+				</div>
 				<p>We are located at</p>
 				<p class="address-line">5901 E. 5th Street, Tucson, AZ 85711</p>
 			</div>
@@ -41,17 +72,13 @@ const { entries: events } = await getEmDashCollection("events", { status: "publi
 		<div class="events-col">
 			<h3 class="col-heading">Upcoming Events</h3>
 
-			{events.length > 0 ? (
-				events.slice(0, 4).map((event) => (
-					<div class="event-item">
-						<span class="event-title">{event.data.title}</span>
-						{event.data.start_date && (
-							<span class="event-date">{event.data.start_date}</span>
-						)}
-						{event.data.description && (
-							<div class="event-pill">{event.data.description}</div>
-						)}
-					</div>
+			{gcalEvents.length > 0 ? (
+				gcalEvents.map((event) => (
+					<a href={event.link} target="_blank" rel="noreferrer" class="event-item event-link">
+						<span class="event-title">{event.title}</span>
+						<span class="event-date">{event.date}</span>
+						<div class="event-pill">{event.time}</div>
+					</a>
 				))
 			) : (
 				<>
@@ -150,21 +177,24 @@ const { entries: events } = await getEmDashCollection("events", { status: "publi
 		color: white;
 	}
 
+	.services-location {
+		text-align: center;
+		font-family: var(--font-body-stack);
+		font-size: 0.85rem;
+		color: rgba(0, 0, 0, 0.6);
+		line-height: 1.5;
+	}
+
 	.services-icon {
-		margin: 0 auto 1rem;
 		width: 8rem;
+		margin: 0 auto -1.5rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.services-icon img {
 		width: 100%;
 		height: auto;
-	}
-
-	.services-address {
-		font-family: var(--font-body-stack);
-		font-size: 0.85rem;
-		color: rgba(0, 0, 0, 0.6);
-		line-height: 1.5;
 	}
 
 	.address-line {
@@ -181,6 +211,20 @@ const { entries: events } = await getEmDashCollection("events", { status: "publi
 		padding-bottom: 1.25rem;
 		margin-bottom: 1.25rem;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+	}
+
+	.event-link {
+		text-decoration: none;
+		transition: background-color 0.2s ease;
+		display: block;
+		border-radius: 6px;
+		padding: 0.75rem;
+		margin: -0.75rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.event-link:hover {
+		background: rgba(0, 0, 0, 0.05);
 	}
 
 	.event-item:last-child {
