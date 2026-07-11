@@ -30,19 +30,24 @@ try {
 	</div>
 
 	<section class="hero-tagline">
-		<div class="hero-tagline-oval">
-			{/* SVG lens shape background */}
-			<svg class="hero-tagline-bg" viewBox="0 0 1600 500" preserveAspectRatio="none" aria-hidden="true">
-				<path d="M-500,250 Q800,-80 2100,250 Q800,580 -500,250 Z" fill="var(--brand-cream, #f5f0e8)" />
-			</svg>
-			<div class="hero-tagline-content">
-				<div class="hero-seal">
-					<img src="/logo.webp" alt="Holy Resurrection Antiochian Orthodox Church" class="hero-seal-img" />
-				</div>
-				<p class="hero-quote">Rooted in Tradition, Alive in Christ</p>
-				<p class="hero-welcome">Welcoming all who seek the ancient Christian faith</p>
+		{/* Top arc — cream curve overlapping photos */}
+		<svg class="hero-arc hero-arc-top" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
+			<path d="M0,200 Q800,-50 1600,200 Z" fill="var(--brand-cream, #f5f0e8)" />
+		</svg>
+
+		{/* Content band */}
+		<div class="hero-tagline-band">
+			<div class="hero-seal">
+				<img src="/logo.webp" alt="Holy Resurrection Antiochian Orthodox Church" class="hero-seal-img" />
 			</div>
+			<p class="hero-quote">Rooted in Tradition, Alive in Christ</p>
+			<p class="hero-welcome">Welcoming all who seek the ancient Christian faith</p>
 		</div>
+
+		{/* Bottom arc — cream curve overlapping dome */}
+		<svg class="hero-arc hero-arc-bottom" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
+			<path d="M0,0 Q800,250 1600,0 Z" fill="var(--brand-cream, #f5f0e8)" />
+		</svg>
 	</section>
 
 	<div class="dome-banner">
@@ -175,55 +180,58 @@ try {
 		.hero-photos { height: 16rem; }
 	}
 
-	/* ===== Tagline — SVG lens shape overlapping photos & dome ===== */
+	/* ===== Tagline — top arc + band + bottom arc ===== */
 	.hero-tagline {
 		position: relative;
 		z-index: 5;
-		margin-top: -14rem;
-		margin-bottom: -1rem;
-		pointer-events: none;
+		margin-top: -8rem;
+		margin-bottom: -8rem;
 	}
 
-	.hero-tagline-oval {
-		position: relative;
-		pointer-events: auto;
-		width: 100%;
-	}
-
-	.hero-tagline-bg {
+	.hero-arc {
 		display: block;
 		width: 100%;
-		height: auto;
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
 	}
 
-	.hero-tagline-content {
-		position: relative;
-		z-index: 2;
+	.hero-arc-top {
+		height: 8rem;
+	}
+
+	.hero-arc-bottom {
+		height: 8rem;
+	}
+
+	.hero-tagline-band {
+		background: var(--brand-cream);
 		text-align: center;
-		padding: 4.5rem 4rem 4.5rem;
+		padding: 0.5rem 4rem 1.5rem;
 	}
 
 	@media (max-width: 600px) {
 		.hero-tagline {
-			margin-top: -8rem;
-			margin-bottom: -6rem;
+			margin-top: -5rem;
+			margin-bottom: -5rem;
 		}
-		.hero-tagline-content {
-			padding: 2.5rem 1.5rem 2.5rem;
+		.hero-arc-top,
+		.hero-arc-bottom {
+			height: 5rem;
+		}
+		.hero-tagline-band {
+			padding: 0.5rem 1.5rem 1rem;
 		}
 	}
 
 	@media (min-width: 1024px) {
 		.hero-tagline {
-			margin-top: -16rem;
-			margin-bottom: -2rem;
+			margin-top: -10rem;
+			margin-bottom: -10rem;
 		}
-		.hero-tagline-content {
-			padding: 5.5rem 5rem 5.5rem;
+		.hero-arc-top,
+		.hero-arc-bottom {
+			height: 10rem;
+		}
+		.hero-tagline-band {
+			padding: 0.5rem 5rem 2rem;
 		}
 	}
 
