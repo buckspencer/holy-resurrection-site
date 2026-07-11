@@ -146,7 +146,7 @@ try {
 </Base>
 
 <style>
-	/* ===== Hero photo strip — full bleed, no gaps ===== */
+	/* ===== Hero photo strip — equal width, white dividers ===== */
 	.hero-photos {
 		display: flex;
 		width: 100%;
@@ -154,8 +154,8 @@ try {
 		overflow: hidden;
 		margin-bottom: 0;
 		line-height: 0;
-		background: var(--brand-primary);
-		gap: 3px;
+		background: white;
+		gap: 4px;
 	}
 
 	.hero-photos img {
@@ -164,8 +164,6 @@ try {
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		clip-path: inset(8% 7% 0% 7%);
-		margin: 0 -7.5%;
 	}
 
 	@media (min-width: 768px) {
@@ -238,26 +236,42 @@ try {
 	.hero-seal {
 		display: flex;
 		justify-content: center;
+		margin-top: -12rem;
 		margin-bottom: 0.75rem;
+		position: relative;
+		z-index: 10;
 	}
 
 	.hero-seal-img {
-		width: 8rem;
-		height: 8rem;
+		width: 12rem;
+		height: 12rem;
 		object-fit: contain;
-		filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.15));
+		filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
 	}
 
 	@media (min-width: 768px) {
 		.hero-seal-img {
-			width: 10rem;
-			height: 10rem;
+			width: 16rem;
+			height: 16rem;
+		}
+		.hero-seal {
+			margin-top: -16rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero-seal-img {
+			width: 19rem;
+			height: 19rem;
+		}
+		.hero-seal {
+			margin-top: -19rem;
 		}
 	}
 
 	.hero-quote {
 		font-family: var(--font-quote-stack);
-		font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+		font-size: clamp(2.2rem, 5.5vw, 4.5rem);
 		color: var(--brand-primary);
 		font-style: italic;
 		letter-spacing: 0.02em;
@@ -267,7 +281,7 @@ try {
 
 	.hero-welcome {
 		font-family: var(--font-heading);
-		font-size: clamp(0.65rem, 1.5vw, 1rem);
+		font-size: clamp(0.8rem, 1.8vw, 1.3rem);
 		color: var(--brand-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
